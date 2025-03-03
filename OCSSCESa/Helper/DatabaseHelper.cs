@@ -10,13 +10,20 @@ namespace OCSSCESa.Helper
         public static MySqlConnection DatabaseConnection()
         {
             var port = Settings.Default.Port;
-            var server = Settings.Default.Server;   
+            var server = Settings.Default.Server;
             var username = Settings.Default.Username;
             var password = Settings.Default.Password;
             var databaseName = Settings.Default.Database;
+
+            string connectionString = $"server={server}; user={username}; password={password}; database={databaseName}; port={port};";
             try
             {
-                return new MySqlConnection($"server={server}; user={username}; password={password}; database={databaseName}; port={port};");
+
+                var connection = new MySqlConnection(connectionString);
+                connection.Open();
+
+                return connection;
+
             }
             catch (Exception)
             {
@@ -24,5 +31,6 @@ namespace OCSSCESa.Helper
             }
 
         }
+
     }
 }

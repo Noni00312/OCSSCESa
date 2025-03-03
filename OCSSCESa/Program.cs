@@ -20,15 +20,15 @@ namespace OCSSCESa
             try
             {
 
-                //Settings.Default.Port = "";
-                //Settings.Default.Server = "";
-                //Settings.Default.Database = "";
-                //Settings.Default.Username = "";
-                //// encrypt password
-                //Settings.Default.Password = "";
+                Settings.Default.Port = "";
+                Settings.Default.Server = "";
+                Settings.Default.Database = "";
+                Settings.Default.Username = "";
+                // encrypt password
+                Settings.Default.Password = "";
 
-                //// Save settings
-                //Settings.Default.Save();
+                // Save settings
+                Settings.Default.Save();
 
 
                 var port = Settings.Default.Port;

@@ -127,6 +127,8 @@
     <Compile Include="DatabaseConfig.Designer.cs">
       <DependentUpon>DatabaseConfig.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\CRUD.cs" />
+    <Compile Include="Helper\PublicHelper.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
