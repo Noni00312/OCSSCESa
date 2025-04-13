@@ -5,15 +5,16 @@ using System.Data;
 using System.Windows.Forms;
 using System.Media;
 using System.Drawing;
+using MySql.Data.MySqlClient;
 
 namespace OCSSCESa.Helper
 {
     public class PublicHelper
     {
 
-       // Display data to Data grid
+        // Display data to Data grid
 
-        public void DisplayData(Guna2DataGridView dataGridView, DataTable dataSource, List<String> columnNames)
+        public static void DisplayData(Guna2DataGridView dataGridView, DataTable dataSource, List<String> columnNames)
         { 
             try
             {
@@ -39,11 +40,11 @@ namespace OCSSCESa.Helper
                         MessageBox.Show("Column names list does not match the number of columns in the DataTable.", "COLUMN COUNT NOT MATCH", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                else
-                {
-                    SystemSounds.Asterisk.Play();
-                    MessageBox.Show("No data found.", "NO DATA FOUND", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                }
+                //else
+                //{
+                //    SystemSounds.Asterisk.Play();
+                //    MessageBox.Show("No data found.", "NO DATA FOUND", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //}
                 
             }
             catch (Exception ex) 
@@ -53,7 +54,7 @@ namespace OCSSCESa.Helper
             }
         }
 
-        public void ClearTextBox(Form frm)
+        public static void ClearControls(Form frm)
         {
             try
             {
@@ -66,7 +67,7 @@ namespace OCSSCESa.Helper
             }
         }
 
-        private void ClearControlRecursive(Control control)
+        private static void ClearControlRecursive(Control control)
         {
             foreach (Control ctrl in control.Controls)
             {
@@ -80,83 +81,152 @@ namespace OCSSCESa.Helper
                     Guna2ComboBox comboBox = (Guna2ComboBox)ctrl;
                     comboBox.SelectedIndex = -1;
                 }
+                else if (control is Guna2DateTimePicker)
+                {
+                    Guna2DateTimePicker dateTimePicker = (Guna2DateTimePicker)control;
+                    dateTimePicker.Value = DateTime.Today.Date;
+                }
+                else if (control is Guna2NumericUpDown)
+                {
+                    Guna2NumericUpDown numeric = (Guna2NumericUpDown)control;
+                    numeric.Value = 0;
+                }
 
                 if (ctrl.HasChildren)
                 {
                     ClearControlRecursive(ctrl);
                 }
+                
             }
         }
 
 
-        public Boolean ValidateControls(Form frm, List<String> exceptionControl)
+        //public  Boolean ValidateControls(Form frm, List<String> exceptionControl = null)
+        //{
+        //    bool isValid = true;
+
+        //    foreach (Control control in frm.Controls)
+        //    {
+        //        if (exceptionControl != null && exceptionControl.Contains(control.Name))
+        //        {
+        //            continue;
+        //        }
+
+        //        if (control is Guna2TextBox)
+        //        {
+        //            Guna2TextBox txt = (Guna2TextBox)control;
+        //            if (String.IsNullOrEmpty(txt.Text))
+        //            {
+        //                isValid = false;
+        //                break;
+        //            }
+
+        //        }
+        //        else if (control is Guna2ComboBox)
+        //        {
+        //            Guna2ComboBox comboBox = (Guna2ComboBox)control;
+        //            if (comboBox.SelectedIndex == -1)
+        //            {
+        //                isValid = false;
+        //                break;
+        //            }
+        //        }
+        //        else if (control is Guna2DateTimePicker)
+        //        {
+        //            Guna2DateTimePicker dateTimePicker = (Guna2DateTimePicker)control;
+        //            if (dateTimePicker.Value.Date == DateTime.Today.Date)
+        //            {
+        //                isValid = false;
+        //                break;
+        //            }
+        //        }
+        //        else if (control is Guna2NumericUpDown)
+        //        {
+
+        //            Guna2NumericUpDown numeric = (Guna2NumericUpDown)control;
+        //            if (numeric.Value == 0)
+        //            {
+        //                isValid = false;
+        //                break;
+        //            }
+        //        }
+        //    }
+
+        //    return isValid;
+
+
+        //}
+
+        public bool ValidateControls(Form frm, List<string> exceptionControl = null)
         {
-            bool isValid = true;
+            var exceptionSet = exceptionControl != null
+                ? new HashSet<string>(exceptionControl, StringComparer.OrdinalIgnoreCase)
+                : null;
 
             foreach (Control control in frm.Controls)
             {
-                if (exceptionControl != null && exceptionControl.Contains(control.Name))
+                if (exceptionSet?.Contains(control.Name) == true)
                 {
                     continue;
                 }
 
-                if (control is Guna2TextBox)
+                switch (control)
                 {
-                    Guna2TextBox txt = (Guna2TextBox)control;
-                    if (String.IsNullOrEmpty(txt.Text))
-                    {
-                        isValid = false;
-                        break;
-                    }
-                   
-                }
-                else if (control is Guna2ComboBox)
-                {
-                    Guna2ComboBox comboBox = (Guna2ComboBox)control;
-                    if (comboBox.SelectedIndex == -1)
-                    {
-                        isValid = false;
-                        break;
-                    }
-                }
-                else if (control is Guna2DateTimePicker )
-                {
-                    Guna2DateTimePicker dateTimePicker = (Guna2DateTimePicker)control;
-                    if (dateTimePicker.Value == DateTime.Now)
-                    {
-                        isValid = false;
-                        break;
-                    }
+                    case Guna2TextBox txt when string.IsNullOrEmpty(txt.Text):
+                    case Guna2ComboBox combo when combo.SelectedIndex == -1:
+                    case Guna2DateTimePicker dtp when dtp.Value.Date == DateTime.Today.Date:
+                    case Guna2NumericUpDown num when num.Value == 0:
+                        return false; 
                 }
             }
 
-            return isValid;
-            
+            return true;
+        }
+
+        public static void DisplayChildForm(Guna2Panel panel, Form childForm)
+        {
+            if (childForm == null || childForm.IsDisposed)
+            {
+                MessageBox.Show("The form is not valid or has been disposed.", "INVALID FORM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            childForm.TopMost = true;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            panel.Controls.Clear();
+            panel.Controls.Add(childForm);
+            childForm.Show();
 
         }
 
-    }
+       
 
+    }
+    //Styling class
     public class Styling
     {
-        public Color primaryColor = Color.WhiteSmoke;
-        public Color secondaryColor = Color.FromArgb(44, 62, 80);
-        public Color accentColors = Color.Maroon;
-        public Color primaryTextColor1 = Color.FromArgb(51, 51, 51);
-        public Color primaryTextColor2 = Color.FromArgb(51, 51, 51);
-        public Color secondaryText1 = Color.FromArgb(44, 62, 80);
-        public Color secondaryText2 = Color.FromArgb(52, 73, 94);
-        public Color accentText1 = Color.FromArgb(128, 0, 0);
-        public Color accentText2 = Color.FromArgb(139, 0, 0);
 
 
-        public void DataGridViewStyle(Guna2DataGridView dataGrid)
+        public static void DataGridViewStyle(Guna2DataGridView dataGrid) 
         {
-            dataGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Bookman Old Style", 12, FontStyle.Bold);
+            Guna2Elipse elipse = new Guna2Elipse();
+
+            //elipse.BorderRadius = 20;
+            //elipse.TargetControl = dataGrid;
+
+            dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Poppins", 10, FontStyle.Bold);
             dataGrid.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
             dataGrid.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGrid.RowsDefaultCellStyle.Font = new Font("Bookman Old Style", 12, FontStyle.Regular);
-            dataGrid.ThemeStyle.HeaderStyle.Height = 40;
+            dataGrid.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(64,0,0);
+            dataGrid.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(255,255,255);
+            dataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGrid.RowsDefaultCellStyle.Font = new Font("Segeo UI", 12, FontStyle.Regular);
+            dataGrid.RowTemplate.Height = 30;
+            dataGrid.RowTemplate.Resizable = DataGridViewTriState.False;
+            dataGrid.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(64, 0, 0);
+            dataGrid.ThemeStyle.HeaderStyle.Height = 50;
 
         }
     }

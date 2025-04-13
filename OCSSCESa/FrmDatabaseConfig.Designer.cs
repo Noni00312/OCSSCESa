@@ -1,6 +1,6 @@
 ﻿namespace OCSSCESa
 {
-    partial class DatabaseConfig
+    partial class FrmDatabaseConfig
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.formElipse = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.formShadow = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
-            this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.portText = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -41,6 +40,7 @@
             this.passwordText = new Guna.UI2.WinForms.Guna2TextBox();
             this.saveButton = new Guna.UI2.WinForms.Guna2Button();
             this.formDragControl = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,25 +48,6 @@
             // 
             this.formElipse.BorderRadius = 30;
             this.formElipse.TargetControl = this;
-            // 
-            // guna2ControlBox1
-            // 
-            this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2ControlBox1.Animated = true;
-            this.guna2ControlBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ControlBox1.BorderRadius = 16;
-            this.guna2ControlBox1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.guna2ControlBox1.FillColor = System.Drawing.Color.WhiteSmoke;
-            this.guna2ControlBox1.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.guna2ControlBox1.HoverState.IconColor = System.Drawing.Color.Maroon;
-            this.guna2ControlBox1.HoverState.Parent = this.guna2ControlBox1;
-            this.guna2ControlBox1.IconColor = System.Drawing.Color.Maroon;
-            this.guna2ControlBox1.Location = new System.Drawing.Point(300, 12);
-            this.guna2ControlBox1.Name = "guna2ControlBox1";
-            this.guna2ControlBox1.PressedColor = System.Drawing.Color.WhiteSmoke;
-            this.guna2ControlBox1.ShadowDecoration.Parent = this.guna2ControlBox1;
-            this.guna2ControlBox1.Size = new System.Drawing.Size(32, 32);
-            this.guna2ControlBox1.TabIndex = 10;
             // 
             // portText
             // 
@@ -95,7 +76,7 @@
             this.portText.SelectedText = "";
             this.portText.ShadowDecoration.Parent = this.portText;
             this.portText.Size = new System.Drawing.Size(295, 35);
-            this.portText.TabIndex = 2;
+            this.portText.TabIndex = 1;
             // 
             // label1
             // 
@@ -174,7 +155,7 @@
             this.databaseText.SelectedText = "";
             this.databaseText.ShadowDecoration.Parent = this.databaseText;
             this.databaseText.Size = new System.Drawing.Size(295, 35);
-            this.databaseText.TabIndex = 2;
+            this.databaseText.TabIndex = 3;
             // 
             // usernameText
             // 
@@ -203,7 +184,7 @@
             this.usernameText.SelectedText = "";
             this.usernameText.ShadowDecoration.Parent = this.usernameText;
             this.usernameText.Size = new System.Drawing.Size(295, 35);
-            this.usernameText.TabIndex = 2;
+            this.usernameText.TabIndex = 4;
             // 
             // passwordText
             // 
@@ -232,7 +213,7 @@
             this.passwordText.SelectedText = "";
             this.passwordText.ShadowDecoration.Parent = this.passwordText;
             this.passwordText.Size = new System.Drawing.Size(295, 35);
-            this.passwordText.TabIndex = 2;
+            this.passwordText.TabIndex = 5;
             this.passwordText.UseSystemPasswordChar = true;
             // 
             // saveButton
@@ -248,13 +229,32 @@
             this.saveButton.Name = "saveButton";
             this.saveButton.ShadowDecoration.Parent = this.saveButton;
             this.saveButton.Size = new System.Drawing.Size(295, 51);
-            this.saveButton.TabIndex = 13;
+            this.saveButton.TabIndex = 6;
             this.saveButton.Text = "Save";
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // formDragControl
             // 
             this.formDragControl.TargetControl = this;
+            // 
+            // guna2ControlBox1
+            // 
+            this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2ControlBox1.Animated = true;
+            this.guna2ControlBox1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ControlBox1.BorderRadius = 16;
+            this.guna2ControlBox1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.guna2ControlBox1.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.guna2ControlBox1.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.guna2ControlBox1.HoverState.IconColor = System.Drawing.Color.Maroon;
+            this.guna2ControlBox1.HoverState.Parent = this.guna2ControlBox1;
+            this.guna2ControlBox1.IconColor = System.Drawing.Color.Maroon;
+            this.guna2ControlBox1.Location = new System.Drawing.Point(300, 12);
+            this.guna2ControlBox1.Name = "guna2ControlBox1";
+            this.guna2ControlBox1.PressedColor = System.Drawing.Color.WhiteSmoke;
+            this.guna2ControlBox1.ShadowDecoration.Parent = this.guna2ControlBox1;
+            this.guna2ControlBox1.Size = new System.Drawing.Size(32, 32);
+            this.guna2ControlBox1.TabIndex = 12;
             // 
             // DatabaseConfig
             // 
@@ -287,7 +287,6 @@
         #endregion
         private Guna.UI2.WinForms.Guna2Elipse formElipse;
         private Guna.UI2.WinForms.Guna2ShadowForm formShadow;
-        private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
         private Guna.UI2.WinForms.Guna2TextBox portText;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -297,5 +296,6 @@
         private Guna.UI2.WinForms.Guna2TextBox serverText;
         private Guna.UI2.WinForms.Guna2Button saveButton;
         private Guna.UI2.WinForms.Guna2DragControl formDragControl;
+        private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
     }
 }

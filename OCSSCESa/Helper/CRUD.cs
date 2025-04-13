@@ -2,6 +2,10 @@
 using System.Data;
 using System.Collections.Generic;
 using System;
+using System.Messaging;
+using System.Windows.Forms;
+
+using System.Media;
 
 namespace OCSSCESa.Helper
 {
@@ -139,6 +143,70 @@ namespace OCSSCESa.Helper
             }
         }
 
-  
+        public bool CallStoredProcedure(string storedProcedureName, bool clearParams)
+        {
+            using (MySqlConnection connection = DatabaseHelper.DatabaseConnection())
+            {
+                if (connection != null)
+                {
+                    try
+                    {
+                        using (MySqlTransaction transaction = connection.BeginTransaction())
+                        {
+                            try
+                            {
+                                using (MySqlCommand command = new MySqlCommand(storedProcedureName, connection, transaction))
+                                {
+                                    command.CommandType = CommandType.StoredProcedure;
+                                    if (sqlParameters != null && sqlParameters.Count > 0)
+                                    {
+                                        command.Parameters.AddRange(sqlParameters.ToArray());
+                                    }
+
+                                    command.ExecuteNonQuery();
+                                }
+
+                                transaction.Commit();
+
+                                if (clearParams)
+                                {
+                                    sqlParameters.Clear();
+                                }
+
+                                return true;
+
+                               
+                            }
+                            catch (Exception spCall)
+                            {
+                                if (transaction != null)
+                                {
+                                    transaction.Rollback();
+                                }
+
+                                SystemSounds.Hand.Play();
+                                MessageBox.Show("An error occur while calling a STORED PROCEDURE.", "SOMETHIGN WENT WRONG", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                Console.WriteLine($"CallStoredProcedure Error: {spCall.Message}");
+
+                                return false;
+                            }
+                        }
+                    }
+                    catch (Exception startingTransaction)
+                    {
+                        SystemSounds.Hand.Play();
+                        MessageBox.Show("Error starting transaction.", "SOMETHIGN WENT WRONG", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Console.WriteLine($"CallStoredProcedure Error: {startingTransaction.Message}");
+                        return false;
+                    }
+
+                }
+                else
+                {
+                    Console.WriteLine("Failed to establish a database connection.");
+                    return false;
+                }
+            }
+        }
     }
 }

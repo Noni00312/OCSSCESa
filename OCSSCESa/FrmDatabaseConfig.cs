@@ -8,9 +8,9 @@ using System.Diagnostics.Contracts;
 
 namespace OCSSCESa
 {
-    public partial class DatabaseConfig : Form
+    public partial class FrmDatabaseConfig : Form
     {
-        public DatabaseConfig()
+        public FrmDatabaseConfig()
         {
             InitializeComponent();
         }
@@ -41,7 +41,7 @@ namespace OCSSCESa
             }
             else
             {
-               
+
                 Settings.Default.Port = port;
                 Settings.Default.Server = server;
                 Settings.Default.Database = databaseName;
