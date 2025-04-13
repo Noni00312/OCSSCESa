@@ -168,7 +168,8 @@ namespace OCSSCESa
 
         private void addCandidateButton_Click(object sender, EventArgs e)
         {
-
+            FrmAddCandidates addCandidate = new FrmAddCandidates();
+            addCandidate.ShowDialog();
         }
     }
 }

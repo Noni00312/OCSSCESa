@@ -177,6 +177,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmAddCandidates.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddCandidates.Designer.cs">
+      <DependentUpon>FrmAddCandidates.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmAddNewStudent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -237,6 +243,12 @@
     <Compile Include="FrmSearch.Designer.cs">
       <DependentUpon>FrmSearch.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmSelectPosition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSelectPosition.Designer.cs">
+      <DependentUpon>FrmSelectPosition.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helper\CRUD.cs" />
     <Compile Include="Helper\PublicHelper.cs" />
     <Compile Include="FrmLogin.cs">
@@ -252,7 +264,6 @@
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helper\ReadData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FrmStudents.cs">
@@ -261,6 +272,9 @@
     <Compile Include="FrmStudents.Designer.cs">
       <DependentUpon>FrmStudents.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FrmAddCandidates.resx">
+      <DependentUpon>FrmAddCandidates.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmAddNewStudent.resx">
       <DependentUpon>FrmAddNewStudent.cs</DependentUpon>
     </EmbeddedResource>
@@ -296,6 +310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSearch.resx">
       <DependentUpon>FrmSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSelectPosition.resx">
+      <DependentUpon>FrmSelectPosition.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -339,6 +356,7 @@
   <ItemGroup>
     <Content Include="Color pallete.txt" />
     <Content Include="ILLink\ILLink.Descriptors.LibraryBuild.xml" />
+    <None Include="Resources\icons8_add_48px.png" />
     <None Include="Resources\icons8_remove_96px_1.png" />
     <None Include="Resources\logo v5.png" />
     <None Include="Resources\logo v5.1.png" />

@@ -33,12 +33,6 @@ namespace OCSSCESa
         {
             InitializeComponent();          
         }
-
-        public DataTable VotersData
-        {
-            get { return _votersData;}
-        }
-
        
         private async Task DisplayStudentData()
         {
@@ -234,53 +228,6 @@ namespace OCSSCESa
                 }
             }
         }
-
-        //private void SearchAndDisplay()
-        //{
-        //    loadingIndicator.Visible = true;
-
-        //    if (String.IsNullOrWhiteSpace(guna2TextBox1.Text))
-        //    {
-        //        Styling.DataGridViewStyle(votersDatagrid);
-
-        //        PublicHelper.DisplayData(votersDatagrid, _votersData, columnNames);
-        //    }
-        //    else
-        //    {
-        //        if (_votersData != null)
-        //        {
-        //            var searchTerm = guna2TextBox1.Text.ToUpper();
-        //            var search = _votersData.AsEnumerable()
-        //                .Where(row =>   
-        //                    (!row.IsNull("studentId") &&
-        //                     row.Field<string>("studentId").ToUpper().Contains(searchTerm)) ||
-        //                    row.Field<string>("fName").ToUpper().Contains(searchTerm) ||
-        //                    row.Field<string>("lName").ToUpper().Contains(searchTerm)
-        //                );
-        //            if (search.Any())
-        //            {
-        //                DataTable filteredData = search.CopyToDataTable();
-
-        //                Styling.DataGridViewStyle(votersDatagrid);
-
-        //                PublicHelper.DisplayData(votersDatagrid, filteredData, columnNames);
-        //            }
-        //            else
-        //            {
-        //                SystemSounds.Hand.Play();
-        //                MessageBox.Show(this, "No data found in the database.", "NO DATA FOUND", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            }
-        //        }
-        //        else
-        //        {
-        //            SystemSounds.Hand.Play();
-        //            MessageBox.Show(this, "No data found in the database.", "NO DATA FOUND", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        }
-
-        //    }
-        //    loadingIndicator.Visible = false;
-        //}
-
 
 
         private void SearchAndDisplay()
