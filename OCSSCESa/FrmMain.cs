@@ -55,7 +55,9 @@ namespace OCSSCESa
 
         private void usersButton_Click(object sender, EventArgs e)
         {
-
+            windowLabel.Text = "Users";
+            FrmUsers users = new FrmUsers();
+            PublicHelper.DisplayChildForm(mainPanel, users);
         }
 
         private void resultsButton_Click(object sender, EventArgs e)

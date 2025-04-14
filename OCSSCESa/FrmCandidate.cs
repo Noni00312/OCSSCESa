@@ -148,29 +148,31 @@ namespace OCSSCESa
 
         private async void delete_Click(object sender, EventArgs e)
         {
-            //if (MessageBox.Show("Are you sure you want to DELETE this data?", "DELETE DATA", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            //{
-            //    string studentId = candidateDatagrid.CurrentRow.Cells[1].Value?.ToString();
 
-            //    crud.AddParameters("p_studentId", studentId);
+            if (MessageBox.Show("Are you sure you want to DELETE this data?", "DELETE DATA", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                string studentId = candidateDatagrid.CurrentRow.Cells[1].Value?.ToString();
+                string deleteQuery = "DELETE FROM candidateTbl WHERE studentId = @studentId";
 
-            //    bool isDataDeleted = crud.CallStoredProcedure("SP_DELETE_DATA", true);
+                crud.AddParameters("@studentId", studentId);
 
-            //    if (isDataDeleted)
-            //    {
-            //        SystemSounds.Asterisk.Play();
-            //        MessageBox.Show(this, "Data successfully DELETE.", "DELETE DATA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                bool isDataDeleted = crud.ExecuteNonQuery(deleteQuery, true);
 
-            //        // Update data source
+                if (isDataDeleted)
+                {
+                    SystemSounds.Asterisk.Play();
+                    MessageBox.Show(this, "Data successfully DELETE.", "DELETE DATA", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            //        await RefreshDataSource();
-            //    }
-            //    else
-            //    {
-            //        SystemSounds.Hand.Play();
-            //        MessageBox.Show(this, "Data failed to DELETE.", "DELETE DATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    }
-            //}
+                    // Update data source
+
+                    await RefreshDataSource();
+                }
+                else
+                {
+                    SystemSounds.Hand.Play();
+                    MessageBox.Show(this, "Data failed to DELETE.", "DELETE DATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
 
         }
 

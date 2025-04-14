@@ -143,6 +143,34 @@ namespace OCSSCESa.Helper
             }
         }
 
+        public int ExecuteScalarHelper(string query)
+        {
+            using (MySqlConnection connection = DatabaseHelper.DatabaseConnection())
+            {
+                if (connection != null)
+                {
+                    try
+                    {
+                        using (MySqlCommand command = new MySqlCommand(query, connection))
+                        {
+                            if (sqlParameters != null &&sqlParameters.Count > 0)
+                            {
+                                command.Parameters.AddRange(sqlParameters.ToArray());
+                            }
+
+                            object result = command.ExecuteScalar();
+                            return Convert.ToInt32(result);
+                        }
+                    }
+                    finally
+                    {
+                        sqlParameters?.Clear(); 
+                    }
+                }
+                throw new Exception("Failed to establish database connection");
+            }
+        }
+
         public bool CallStoredProcedure(string storedProcedureName, bool clearParams)
         {
             using (MySqlConnection connection = DatabaseHelper.DatabaseConnection())

@@ -195,6 +195,12 @@
     <Compile Include="FrmAddPosition.Designer.cs">
       <DependentUpon>FrmAddPosition.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmAddUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddUser.Designer.cs">
+      <DependentUpon>FrmAddUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmArchive.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -255,7 +261,14 @@
     <Compile Include="FrmSelectPosition.Designer.cs">
       <DependentUpon>FrmSelectPosition.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUsers.Designer.cs">
+      <DependentUpon>FrmUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helper\CRUD.cs" />
+    <Compile Include="Helper\PasswordHasher.cs" />
     <Compile Include="Helper\PublicHelper.cs" />
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
@@ -278,6 +291,12 @@
     <Compile Include="FrmStudents.Designer.cs">
       <DependentUpon>FrmStudents.cs</DependentUpon>
     </Compile>
+    <Compile Include="ucUsers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucUsers.Designer.cs">
+      <DependentUpon>ucUsers.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FrmAddCandidates.resx">
       <DependentUpon>FrmAddCandidates.cs</DependentUpon>
     </EmbeddedResource>
@@ -286,6 +305,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAddPosition.resx">
       <DependentUpon>FrmAddPosition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAddUser.resx">
+      <DependentUpon>FrmAddUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmArchive.resx">
       <DependentUpon>FrmArchive.cs</DependentUpon>
@@ -323,6 +345,9 @@
     <EmbeddedResource Include="FrmSelectPosition.resx">
       <DependentUpon>FrmSelectPosition.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmUsers.resx">
+      <DependentUpon>FrmUsers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -335,6 +360,9 @@
     </Compile>
     <EmbeddedResource Include="FrmStudents.resx">
       <DependentUpon>FrmStudents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucUsers.resx">
+      <DependentUpon>ucUsers.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
