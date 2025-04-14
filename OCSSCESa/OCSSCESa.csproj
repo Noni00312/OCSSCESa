@@ -189,6 +189,12 @@
     <Compile Include="FrmAddNewStudent.Designer.cs">
       <DependentUpon>FrmAddNewStudent.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmAddPosition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddPosition.Designer.cs">
+      <DependentUpon>FrmAddPosition.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmArchive.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -278,6 +284,9 @@
     <EmbeddedResource Include="FrmAddNewStudent.resx">
       <DependentUpon>FrmAddNewStudent.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmAddPosition.resx">
+      <DependentUpon>FrmAddPosition.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmArchive.resx">
       <DependentUpon>FrmArchive.cs</DependentUpon>
     </EmbeddedResource>
@@ -356,6 +365,7 @@
   <ItemGroup>
     <Content Include="Color pallete.txt" />
     <Content Include="ILLink\ILLink.Descriptors.LibraryBuild.xml" />
+    <None Include="Resources\icons8_add_50px.png" />
     <None Include="Resources\icons8_add_48px.png" />
     <None Include="Resources\icons8_remove_96px_1.png" />
     <None Include="Resources\logo v5.png" />

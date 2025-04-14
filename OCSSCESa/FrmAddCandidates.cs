@@ -16,6 +16,8 @@ namespace OCSSCESa
         private readonly CRUD _crud = new CRUD();
         private DataTable _studentData;
         private string _studentName;
+        private FrmCandidate frmCandi; 
+        public bool addedNew = false;
         private readonly List<string> _columnNames = new List<string>
         {
             "Student ID", "First name", "Middle name", "Last name", "Suffix",
@@ -23,9 +25,10 @@ namespace OCSSCESa
             "Year level"
         };
 
-        public FrmAddCandidates()
+        public FrmAddCandidates( FrmCandidate frmCandidate)
         {
             InitializeComponent();
+            frmCandi = frmCandidate;
         }
 
         private async Task DisplayStudentData()
@@ -112,22 +115,29 @@ namespace OCSSCESa
             }
         }
 
-        private async void addCandidate_Click(object sender, EventArgs e)
+        private  void addCandidate_Click(object sender, EventArgs e)
         {
-            //if (MessageBox.Show("Are you sure you want to ARCHIVE this data?",
-            //                   "ARCHIVE DATA",
-            //                   MessageBoxButtons.YesNo,
-            //                   MessageBoxIcon.Question) != DialogResult.Yes)
-            //{
-            //    return;
-            //}
 
             string studentName = studentListDatagrid.CurrentRow.Cells[1].Value?.ToString() + " " + studentListDatagrid.CurrentRow.Cells[2].Value?.ToString() + " " + studentListDatagrid.CurrentRow.Cells[3].Value?.ToString() + " " + studentListDatagrid.CurrentRow.Cells[4].Value?.ToString();
             string studentId = studentListDatagrid.CurrentRow.Cells[0].Value?.ToString();
 
-            FrmSelectPosition frmSelectPosition = new FrmSelectPosition(studentName, studentId);
 
-            frmSelectPosition.ShowDialog();
+            string checkQuery = "SELECT studentId FROM candidateTbl WHERE studentId = @studentId LIMIT 1;";
+
+            _crud.AddParameters("@studentId", studentId);
+
+            DataTable checkResult = _crud.ReadData(checkQuery, true);
+
+            if (checkResult != null)
+            {
+                SystemSounds.Hand.Play();
+                MessageBox.Show("Student is already a candidate.", "CANDIDATE ALREADT EXIST", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            FrmSelectPosition frmSelectPosition = new FrmSelectPosition(studentName, studentId, this, true, "Select position");
+
+            frmSelectPosition.ShowDialog(this);
         }
 
         private void SearchAndDisplay()
@@ -210,7 +220,7 @@ namespace OCSSCESa
         }
 
 
-        private async void FrmAddCandidates_Load(object sender, EventArgs e)
+        private  void FrmAddCandidates_Load(object sender, EventArgs e)
         {
             formShadow.SetShadowForm(this);
             //await RefreshDataSource().ConfigureAwait(false);
@@ -224,6 +234,20 @@ namespace OCSSCESa
         private void btnSearch_Click(object sender, EventArgs e)
         {
             SearchData();
+        }
+
+        private void FrmAddCandidates_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)  {
+                btnSearch.PerformClick();
+            }
+        }
+
+        private async void FrmAddCandidates_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if(addedNew) {
+                await frmCandi.RefreshDataSource().ConfigureAwait(false);
+            }
         }
     }
 }

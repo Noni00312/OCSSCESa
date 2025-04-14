@@ -6,6 +6,8 @@ using System.Windows.Forms;
 using System.Media;
 using System.Drawing;
 using MySql.Data.MySqlClient;
+using System.IO;
+using System.Drawing.Imaging;
 
 namespace OCSSCESa.Helper
 {
@@ -13,6 +15,79 @@ namespace OCSSCESa.Helper
     {
 
         // Display data to Data grid
+
+        private static readonly object GdiLock = new object();
+        public static string ImageToBase64(Image image, System.Drawing.Imaging.ImageFormat format)
+        {
+            if (image == null)
+                throw new ArgumentNullException(nameof(image));
+
+            // Clone the image to avoid disposal issues
+            using (Image clonedImage = new Bitmap(image))
+            using (MemoryStream ms = new MemoryStream())
+            {
+                // Use a lock for thread safety (if needed)
+                lock (GdiLock)
+                {
+                    clonedImage.Save(ms, format);
+                }
+                return Convert.ToBase64String(ms.ToArray());
+            }
+        }
+
+        public static Image Base64ToImage(string base64String)
+        {
+            try
+            {
+                byte[] imageBytes = Convert.FromBase64String(base64String);
+
+                using (MemoryStream ms = new MemoryStream(imageBytes, 0, imageBytes.Length))
+                {
+                    ms.Write(imageBytes, 0, imageBytes.Length);
+                    return Image.FromStream(ms, true);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error converting Base64 to Image: {ex.Message}");
+                return null;
+            }
+        }
+
+        public static System.Drawing.Imaging.ImageFormat GetImageFormat(string filename)
+        {
+            string extension = Path.GetExtension(filename).ToLower();
+            switch (extension)
+            {
+                case ".jpg":
+                case ".jpeg":
+                    return System.Drawing.Imaging.ImageFormat.Jpeg;
+                case ".png":
+                    return System.Drawing.Imaging.ImageFormat.Png;
+                case ".bmp":
+                    return System.Drawing.Imaging.ImageFormat.Bmp;
+                default:
+                    throw new NotSupportedException("File format not supported");
+            }
+        
+        }
+
+        public static ImageFormat GetImageFormat_2(Image image)
+        {
+            if (image.RawFormat.Equals(ImageFormat.Jpeg))
+                return ImageFormat.Jpeg;
+            if (image.RawFormat.Equals(ImageFormat.Png))
+                return ImageFormat.Png;
+            if (image.RawFormat.Equals(ImageFormat.Bmp))
+                return ImageFormat.Bmp;
+            if (image.RawFormat.Equals(ImageFormat.Gif))
+                return ImageFormat.Gif;
+            if (image.RawFormat.Equals(ImageFormat.Tiff))
+                return ImageFormat.Tiff;
+
+          
+            return ImageFormat.Png; 
+        }
 
         public static void DisplayData(Guna2DataGridView dataGridView, DataTable dataSource, List<String> columnNames)
         { 

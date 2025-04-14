@@ -16,11 +16,11 @@ namespace OCSSCESa
     {
 
         private CRUD crud = new CRUD();
-        private DataTable candidatesData = new DataTable();
+        private DataTable _candidatesData = new DataTable();
 
         List<String> columnNames = new List<String>()
         {
-            "Candidate Id", "Student ID", "Full name", "Year level", "Position"
+            "Candidate Id", "Student ID", "Full name", "Year level", "Position", "Candidate Picture"
         };
 
         public FrmCandidate()
@@ -35,7 +35,7 @@ namespace OCSSCESa
             {
 
 
-                string query = "SELECT c.candidateId, i.studentId, CONCAT(' ', i.fName, i.mName, i.lName, i.suffix) AS fullName, i.yearLevel, p.positionName " +
+                string query = "SELECT c.candidateId, i.studentId, CONCAT(' ', i.fName, i.mName, i.lName, i.suffix) AS fullName, i.yearLevel, p.positionName, c.candidatePic " +
                     "FROM studentInfoTbl i " +
                     "INNER JOIN candidateTbl c ON i.studentId = c.studentId " +
                     "INNER JOIN positionTbl p ON c.positionId = p.positionId;";
@@ -46,7 +46,7 @@ namespace OCSSCESa
                 {
                     this.Invoke((MethodInvoker)delegate
                     {
-                        candidatesData = candidates;
+                        _candidatesData = candidates;
                         UpdateDataGrid();
 
                     });
@@ -55,8 +55,8 @@ namespace OCSSCESa
                 {
                     this.Invoke((MethodInvoker)delegate
                     {
-                        candidatesData = candidates;
-                        candidateDatagrid.DataSource = candidatesData;
+                        _candidatesData = candidates;
+                        candidateDatagrid.DataSource = _candidatesData;
 
 
                         SystemSounds.Hand.Play();
@@ -92,12 +92,14 @@ namespace OCSSCESa
             {
                 loadingIndicator.Visible = false;
             });
-            PublicHelper.DisplayData(candidateDatagrid, candidatesData, columnNames);
+            PublicHelper.DisplayData(candidateDatagrid, _candidatesData, columnNames);
 
         }
 
         private async void FrmCandidate_Load(object sender, EventArgs e)
         {
+            Styling.DataGridViewStyle(candidateDatagrid);
+            candidateDatagrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             await RefreshDataSource();
         }
 
@@ -113,18 +115,18 @@ namespace OCSSCESa
 
                     ContextMenuStrip contextMenu = new ContextMenuStrip();
 
-                    ToolStripMenuItem editStudentData = new ToolStripMenuItem("Edit");
+                    ToolStripMenuItem editCandidateData = new ToolStripMenuItem("Edit");
                     ToolStripMenuItem deleteData = new ToolStripMenuItem("Delete");
-                    editStudentData.Font = new Font("Segeo UI", 12, FontStyle.Regular);
+                    editCandidateData.Font = new Font("Segeo UI", 12, FontStyle.Regular);
                     deleteData.Font = new Font("Segeo UI", 12, FontStyle.Regular);
-                    editStudentData.Image = Properties.Resources.icons8_edit_96px;
+                    editCandidateData.Image = Properties.Resources.icons8_edit_96px;
                     deleteData.Image = Properties.Resources.icons8_remove_96px_1;
 
-                    editStudentData.Tag = e.RowIndex;
-                    editStudentData.Click += editStudentData_Click;
+                    editCandidateData.Tag = e.RowIndex;
+                    editCandidateData.Click += editStudentData_Click;
                     deleteData.Click += delete_Click;
 
-                    contextMenu.Items.Add(editStudentData);
+                    contextMenu.Items.Add(editCandidateData);
                     contextMenu.Items.Add(deleteData);
 
                     contextMenu.Show(candidateDatagrid, candidateDatagrid.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false).Location);
@@ -135,59 +137,124 @@ namespace OCSSCESa
 
         private void editStudentData_Click(object sender, EventArgs e)
         {
-
+            string studentId = candidateDatagrid.CurrentRow.Cells[1].Value?.ToString();
+            string studentName = candidateDatagrid.CurrentRow.Cells[2].Value?.ToString();
+            string positionName = candidateDatagrid.CurrentRow.Cells[4].Value?.ToString();
+            string candidatePic = candidateDatagrid.CurrentRow.Cells[5].Value?.ToString();
+            FrmAddCandidates frmAddCandidates = new FrmAddCandidates(this);
+            FrmSelectPosition frmSelectPosition = new FrmSelectPosition(studentName, studentId, frmAddCandidates, false, "Edit candidate" ,candidatePic, positionName);
+            frmSelectPosition.ShowDialog(this);
         }
 
         private async void delete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to DELETE this data?", "DELETE DATA", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                string studentId = candidateDatagrid.CurrentRow.Cells[1].Value?.ToString();
+            //if (MessageBox.Show("Are you sure you want to DELETE this data?", "DELETE DATA", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            //{
+            //    string studentId = candidateDatagrid.CurrentRow.Cells[1].Value?.ToString();
 
-                crud.AddParameters("p_studentId", studentId);
+            //    crud.AddParameters("p_studentId", studentId);
 
-                bool isDataDeleted = crud.CallStoredProcedure("SP_DELETE_DATA", true);
+            //    bool isDataDeleted = crud.CallStoredProcedure("SP_DELETE_DATA", true);
 
-                if (isDataDeleted)
-                {
-                    SystemSounds.Asterisk.Play();
-                    MessageBox.Show(this, "Data successfully DELETE.", "DELETE DATA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    if (isDataDeleted)
+            //    {
+            //        SystemSounds.Asterisk.Play();
+            //        MessageBox.Show(this, "Data successfully DELETE.", "DELETE DATA", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Update data source
+            //        // Update data source
 
-                    await RefreshDataSource();
-                }
-                else
-                {
-                    SystemSounds.Hand.Play();
-                    MessageBox.Show(this, "Data failed to DELETE.", "DELETE DATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+            //        await RefreshDataSource();
+            //    }
+            //    else
+            //    {
+            //        SystemSounds.Hand.Play();
+            //        MessageBox.Show(this, "Data failed to DELETE.", "DELETE DATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    }
+            //}
 
         }
 
         private void addCandidateButton_Click(object sender, EventArgs e)
         {
-            FrmAddCandidates addCandidate = new FrmAddCandidates();
-            addCandidate.ShowDialog();
+            FrmAddCandidates addCandidate = new FrmAddCandidates(this);
+            addCandidate.ShowDialog(this);
+        }
+
+        private void SearchAndDisplay()
+        {
+            loadingIndicator.Visible = true;
+            candidateDatagrid.Visible = false;
+            Application.DoEvents();
+
+            try
+            {
+                if (String.IsNullOrWhiteSpace(guna2TextBox1.Text))
+                {
+                    DisplayAllData();
+                }
+                else
+                {
+                    SearchData();
+                }
+            }
+            finally
+            {
+                loadingIndicator.Visible = false;
+                candidateDatagrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                candidateDatagrid.Visible = true;
+            }
+        }
+
+        private void DisplayAllData()
+        {
+            Styling.DataGridViewStyle(candidateDatagrid);
+            PublicHelper.DisplayData(candidateDatagrid, _candidatesData, columnNames);
+        }
+
+        private void SearchData()
+        {
+            if (_candidatesData == null || _candidatesData.Rows.Count == 0)
+            {
+                ShowNotFoundError();
+                return;
+            }
+
+            var searchTerm = guna2TextBox1.Text.ToUpper();
+            var filteredRows = _candidatesData.AsEnumerable()
+                .Where(row => row.Field<string>("studentId")?.ToUpper().Contains(searchTerm) == true ||
+                             row.Field<string>("fullName")?.ToUpper().Contains(searchTerm) == true ||
+                             row.Field<string>("positionName")?.ToUpper().Contains(searchTerm) == true)
+                .ToList();
+
+            if (filteredRows.Any())
+            {
+                DataTable filteredData = filteredRows.CopyToDataTable();
+                Styling.DataGridViewStyle(candidateDatagrid);
+                PublicHelper.DisplayData(candidateDatagrid, filteredData, columnNames);
+            }
+            else
+            {
+                ShowNotFoundError();
+            }
+        }
+
+        private void ShowNotFoundError()
+        {
+            SystemSounds.Hand.Play();
+            MessageBox.Show(this, "No data found in the database.",
+                "NO DATA FOUND", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            SearchAndDisplay();
+        }
+
+        private void positionsButton_Click(object sender, EventArgs e)
+        {
+            FrmAddPosition frmAddPosition = new FrmAddPosition();
+            frmAddPosition.ShowDialog(this);
         }
     }
 }
-
-//using (MySqlConnection conn = new MySqlConnection(connectionString))
-//{
-//    MySqlCommand cmd = new MySqlCommand("SP_DELETE_DATA", conn);
-//    cmd.CommandType = CommandType.StoredProcedure;
-//    cmd.Parameters.AddWithValue("@p_studentId", studentId);
-
-//    conn.Open();
-//    using (MySqlDataReader reader = cmd.ExecuteReader())
-//    {
-//        if (reader.Read())
-//        {
-//            int status = reader.GetInt32("status");
-//            string message = reader.GetString("message");
-//            Console.WriteLine($"Status: {status}, Message: {message}");
-//        }
-//    }
-//}

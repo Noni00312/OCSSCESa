@@ -123,9 +123,9 @@
             this.renderLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.renderLabel.Location = new System.Drawing.Point(36, 51);
             this.renderLabel.Name = "renderLabel";
-            this.renderLabel.Size = new System.Drawing.Size(172, 17);
+            this.renderLabel.Size = new System.Drawing.Size(175, 17);
             this.renderLabel.TabIndex = 7;
-            this.renderLabel.Text = "Rendering data. Please wait.";
+            this.renderLabel.Text = "Searching data. Please wait...";
             // 
             // studentListDatagrid
             // 
@@ -240,11 +240,14 @@
             this.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmAddCandidates";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FrmAddCandidates";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmAddCandidates_FormClosed);
             this.Load += new System.EventHandler(this.FrmAddCandidates_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmAddCandidates_KeyDown);
             this.loadingIndicator.ResumeLayout(false);
             this.loadingIndicator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.studentListDatagrid)).EndInit();

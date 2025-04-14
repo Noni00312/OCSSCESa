@@ -34,12 +34,14 @@
             this.candidateDatagrid = new Guna.UI2.WinForms.Guna2DataGridView();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnSearch = new Guna.UI2.WinForms.Guna2Button();
             this.positionsButton = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.addCandidateButton = new Guna.UI2.WinForms.Guna2Button();
             this.loadingIndicator = new Guna.UI2.WinForms.Guna2Panel();
             this.renderLabel = new System.Windows.Forms.Label();
-            this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.candidateDatagrid)).BeginInit();
             this.guna2Panel2.SuspendLayout();
             this.loadingIndicator.SuspendLayout();
@@ -125,6 +127,8 @@
             // guna2Panel2
             // 
             this.guna2Panel2.Controls.Add(this.guna2TextBox1);
+            this.guna2Panel2.Controls.Add(this.guna2Panel4);
+            this.guna2Panel2.Controls.Add(this.btnSearch);
             this.guna2Panel2.Controls.Add(this.positionsButton);
             this.guna2Panel2.Controls.Add(this.guna2Panel1);
             this.guna2Panel2.Controls.Add(this.addCandidateButton);
@@ -136,6 +140,74 @@
             this.guna2Panel2.ShadowDecoration.Parent = this.guna2Panel2;
             this.guna2Panel2.Size = new System.Drawing.Size(905, 61);
             this.guna2Panel2.TabIndex = 9;
+            // 
+            // guna2TextBox1
+            // 
+            this.guna2TextBox1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2TextBox1.BorderRadius = 5;
+            this.guna2TextBox1.BorderThickness = 0;
+            this.guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.guna2TextBox1.DefaultText = "";
+            this.guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.guna2TextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.guna2TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.guna2TextBox1.DisabledState.Parent = this.guna2TextBox1;
+            this.guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.guna2TextBox1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.guna2TextBox1.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2TextBox1.FocusedState.Parent = this.guna2TextBox1;
+            this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2TextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2TextBox1.HoverState.Parent = this.guna2TextBox1;
+            this.guna2TextBox1.IconLeftSize = new System.Drawing.Size(30, 30);
+            this.guna2TextBox1.IconRight = global::OCSSCESa.Properties.Resources.icons8_search_client_64px_1;
+            this.guna2TextBox1.IconRightSize = new System.Drawing.Size(30, 30);
+            this.guna2TextBox1.Location = new System.Drawing.Point(479, 8);
+            this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.guna2TextBox1.Name = "guna2TextBox1";
+            this.guna2TextBox1.PasswordChar = '\0';
+            this.guna2TextBox1.PlaceholderText = "Search";
+            this.guna2TextBox1.SelectedText = "";
+            this.guna2TextBox1.ShadowDecoration.Parent = this.guna2TextBox1;
+            this.guna2TextBox1.Size = new System.Drawing.Size(257, 45);
+            this.guna2TextBox1.TabIndex = 8;
+            // 
+            // guna2Panel4
+            // 
+            this.guna2Panel4.Dock = System.Windows.Forms.DockStyle.Right;
+            this.guna2Panel4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.guna2Panel4.Location = new System.Drawing.Point(736, 8);
+            this.guna2Panel4.Name = "guna2Panel4";
+            this.guna2Panel4.ShadowDecoration.Parent = this.guna2Panel4;
+            this.guna2Panel4.Size = new System.Drawing.Size(10, 45);
+            this.guna2Panel4.TabIndex = 20;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.BackColor = System.Drawing.Color.Transparent;
+            this.btnSearch.BorderRadius = 5;
+            this.btnSearch.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(92)))), ((int)(((byte)(113)))));
+            this.btnSearch.CheckedState.Parent = this.btnSearch;
+            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSearch.CustomImages.Parent = this.btnSearch;
+            this.btnSearch.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnSearch.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.btnSearch.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.ForeColor = System.Drawing.Color.White;
+            this.btnSearch.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(126)))), ((int)(((byte)(138)))));
+            this.btnSearch.HoverState.Parent = this.btnSearch;
+            this.btnSearch.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.btnSearch.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnSearch.Location = new System.Drawing.Point(746, 8);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.ShadowDecoration.Parent = this.btnSearch;
+            this.btnSearch.Size = new System.Drawing.Size(151, 45);
+            this.btnSearch.TabIndex = 19;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseTransparentBackground = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // positionsButton
             // 
@@ -158,8 +230,9 @@
             this.positionsButton.ShadowDecoration.Parent = this.positionsButton;
             this.positionsButton.Size = new System.Drawing.Size(125, 45);
             this.positionsButton.TabIndex = 7;
-            this.positionsButton.Text = "Positions";
+            this.positionsButton.Text = "Add Position";
             this.positionsButton.UseTransparentBackground = true;
+            this.positionsButton.Click += new System.EventHandler(this.positionsButton_Click);
             // 
             // guna2Panel1
             // 
@@ -219,39 +292,6 @@
             this.renderLabel.TabIndex = 7;
             this.renderLabel.Text = "Rendering data. Please wait.";
             // 
-            // guna2TextBox1
-            // 
-            this.guna2TextBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2TextBox1.BorderRadius = 5;
-            this.guna2TextBox1.BorderThickness = 0;
-            this.guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox1.DefaultText = "";
-            this.guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.DisabledState.Parent = this.guna2TextBox1;
-            this.guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.guna2TextBox1.FillColor = System.Drawing.Color.WhiteSmoke;
-            this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.FocusedState.Parent = this.guna2TextBox1;
-            this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2TextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.HoverState.Parent = this.guna2TextBox1;
-            this.guna2TextBox1.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.guna2TextBox1.IconRight = global::OCSSCESa.Properties.Resources.icons8_search_client_64px_1;
-            this.guna2TextBox1.IconRightSize = new System.Drawing.Size(30, 30);
-            this.guna2TextBox1.Location = new System.Drawing.Point(640, 8);
-            this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.guna2TextBox1.Name = "guna2TextBox1";
-            this.guna2TextBox1.PasswordChar = '\0';
-            this.guna2TextBox1.PlaceholderText = "Search";
-            this.guna2TextBox1.SelectedText = "";
-            this.guna2TextBox1.ShadowDecoration.Parent = this.guna2TextBox1;
-            this.guna2TextBox1.Size = new System.Drawing.Size(257, 45);
-            this.guna2TextBox1.TabIndex = 8;
-            // 
             // FrmCandidate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -290,5 +330,7 @@
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
         private Guna.UI2.WinForms.Guna2Panel loadingIndicator;
         private System.Windows.Forms.Label renderLabel;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel4;
+        private Guna.UI2.WinForms.Guna2Button btnSearch;
     }
 }
