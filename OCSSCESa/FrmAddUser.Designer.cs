@@ -30,9 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.formDragControl = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.userPicture = new Guna.UI2.WinForms.Guna2PictureBox();
             this.userImagePath = new Guna.UI2.WinForms.Guna2TextBox();
-            this.saveButton = new Guna.UI2.WinForms.Guna2Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.browseImage = new Guna.UI2.WinForms.Guna2Button();
@@ -46,22 +44,17 @@
             this.label4 = new System.Windows.Forms.Label();
             this.userPassword = new Guna.UI2.WinForms.Guna2TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.infoText = new System.Windows.Forms.Label();
+            this.userPicture = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.saveButton = new Guna.UI2.WinForms.Guna2Button();
+            this.infoIcon = new Guna.UI2.WinForms.Guna2PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.userPicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.infoIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // formDragControl
             // 
             this.formDragControl.TargetControl = null;
-            // 
-            // userPicture
-            // 
-            this.userPicture.Location = new System.Drawing.Point(492, 82);
-            this.userPicture.Name = "userPicture";
-            this.userPicture.ShadowDecoration.Parent = this.userPicture;
-            this.userPicture.Size = new System.Drawing.Size(135, 126);
-            this.userPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.userPicture.TabIndex = 35;
-            this.userPicture.TabStop = false;
             // 
             // userImagePath
             // 
@@ -81,7 +74,7 @@
             this.userImagePath.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.userImagePath.HoverState.BorderColor = System.Drawing.Color.LightCoral;
             this.userImagePath.HoverState.Parent = this.userImagePath;
-            this.userImagePath.Location = new System.Drawing.Point(39, 229);
+            this.userImagePath.Location = new System.Drawing.Point(39, 273);
             this.userImagePath.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
             this.userImagePath.Name = "userImagePath";
             this.userImagePath.PasswordChar = '\0';
@@ -93,34 +86,11 @@
             this.userImagePath.Size = new System.Drawing.Size(449, 36);
             this.userImagePath.TabIndex = 34;
             // 
-            // saveButton
-            // 
-            this.saveButton.BorderRadius = 8;
-            this.saveButton.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(92)))), ((int)(((byte)(113)))));
-            this.saveButton.CheckedState.Parent = this.saveButton;
-            this.saveButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.saveButton.CustomImages.Parent = this.saveButton;
-            this.saveButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.saveButton.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveButton.ForeColor = System.Drawing.Color.White;
-            this.saveButton.HoverState.FillColor = System.Drawing.Color.Maroon;
-            this.saveButton.HoverState.Parent = this.saveButton;
-            this.saveButton.Image = global::OCSSCESa.Properties.Resources.icons8_save_96px;
-            this.saveButton.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.saveButton.ImageSize = new System.Drawing.Size(30, 30);
-            this.saveButton.Location = new System.Drawing.Point(37, 289);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.ShadowDecoration.Parent = this.saveButton;
-            this.saveButton.Size = new System.Drawing.Size(590, 53);
-            this.saveButton.TabIndex = 5;
-            this.saveButton.Text = "Save";
-            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Poppins SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(315, 56);
+            this.label2.Location = new System.Drawing.Point(315, 100);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(80, 23);
             this.label2.TabIndex = 31;
@@ -130,7 +100,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Poppins SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(33, 56);
+            this.label1.Location = new System.Drawing.Point(33, 100);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 23);
             this.label1.TabIndex = 32;
@@ -151,7 +121,7 @@
             this.browseImage.HoverState.Parent = this.browseImage;
             this.browseImage.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.browseImage.ImageSize = new System.Drawing.Size(30, 30);
-            this.browseImage.Location = new System.Drawing.Point(492, 229);
+            this.browseImage.Location = new System.Drawing.Point(492, 273);
             this.browseImage.Name = "browseImage";
             this.browseImage.ShadowDecoration.Parent = this.browseImage;
             this.browseImage.Size = new System.Drawing.Size(135, 36);
@@ -208,7 +178,7 @@
             this.fullName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.fullName.HoverState.BorderColor = System.Drawing.Color.LightCoral;
             this.fullName.HoverState.Parent = this.fullName;
-            this.fullName.Location = new System.Drawing.Point(37, 82);
+            this.fullName.Location = new System.Drawing.Point(37, 126);
             this.fullName.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
             this.fullName.Name = "fullName";
             this.fullName.PasswordChar = '\0';
@@ -237,7 +207,7 @@
             this.userId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.userId.HoverState.BorderColor = System.Drawing.Color.LightCoral;
             this.userId.HoverState.Parent = this.userId;
-            this.userId.Location = new System.Drawing.Point(319, 82);
+            this.userId.Location = new System.Drawing.Point(319, 126);
             this.userId.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
             this.userId.Name = "userId";
             this.userId.PasswordChar = '\0';
@@ -266,7 +236,7 @@
             this.userName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.userName.HoverState.BorderColor = System.Drawing.Color.LightCoral;
             this.userName.HoverState.Parent = this.userName;
-            this.userName.Location = new System.Drawing.Point(37, 155);
+            this.userName.Location = new System.Drawing.Point(37, 199);
             this.userName.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
             this.userName.Name = "userName";
             this.userName.PasswordChar = '\0';
@@ -281,7 +251,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Poppins SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(33, 130);
+            this.label3.Location = new System.Drawing.Point(33, 174);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(79, 23);
             this.label3.TabIndex = 32;
@@ -291,7 +261,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Poppins SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(262, 130);
+            this.label4.Location = new System.Drawing.Point(262, 174);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 23);
             this.label4.TabIndex = 32;
@@ -315,7 +285,7 @@
             this.userPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.userPassword.HoverState.BorderColor = System.Drawing.Color.LightCoral;
             this.userPassword.HoverState.Parent = this.userPassword;
-            this.userPassword.Location = new System.Drawing.Point(266, 155);
+            this.userPassword.Location = new System.Drawing.Point(266, 199);
             this.userPassword.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
             this.userPassword.Name = "userPassword";
             this.userPassword.PasswordChar = '\0';
@@ -331,18 +301,77 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Poppins SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(35, 203);
+            this.label5.Location = new System.Drawing.Point(35, 247);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(77, 23);
             this.label5.TabIndex = 32;
             this.label5.Text = "Full name";
+            // 
+            // infoText
+            // 
+            this.infoText.AutoSize = true;
+            this.infoText.Font = new System.Drawing.Font("Poppins SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.infoText.ForeColor = System.Drawing.Color.DimGray;
+            this.infoText.Location = new System.Drawing.Point(73, 63);
+            this.infoText.Name = "infoText";
+            this.infoText.Size = new System.Drawing.Size(525, 23);
+            this.infoText.TabIndex = 36;
+            this.infoText.Text = "You can leave the password or image blank if you don\'t want them to update.";
+            this.infoText.Visible = false;
+            // 
+            // userPicture
+            // 
+            this.userPicture.Location = new System.Drawing.Point(492, 126);
+            this.userPicture.Name = "userPicture";
+            this.userPicture.ShadowDecoration.Parent = this.userPicture;
+            this.userPicture.Size = new System.Drawing.Size(135, 126);
+            this.userPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.userPicture.TabIndex = 35;
+            this.userPicture.TabStop = false;
+            // 
+            // saveButton
+            // 
+            this.saveButton.BorderRadius = 8;
+            this.saveButton.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(92)))), ((int)(((byte)(113)))));
+            this.saveButton.CheckedState.Parent = this.saveButton;
+            this.saveButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.saveButton.CustomImages.Parent = this.saveButton;
+            this.saveButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.saveButton.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveButton.ForeColor = System.Drawing.Color.White;
+            this.saveButton.HoverState.FillColor = System.Drawing.Color.Maroon;
+            this.saveButton.HoverState.Parent = this.saveButton;
+            this.saveButton.Image = global::OCSSCESa.Properties.Resources.icons8_save_96px;
+            this.saveButton.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.saveButton.ImageSize = new System.Drawing.Size(30, 30);
+            this.saveButton.Location = new System.Drawing.Point(37, 333);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.ShadowDecoration.Parent = this.saveButton;
+            this.saveButton.Size = new System.Drawing.Size(590, 53);
+            this.saveButton.TabIndex = 5;
+            this.saveButton.Text = "Save";
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            // 
+            // infoIcon
+            // 
+            this.infoIcon.Image = global::OCSSCESa.Properties.Resources.icons8_info_squared_96px;
+            this.infoIcon.Location = new System.Drawing.Point(37, 59);
+            this.infoIcon.Name = "infoIcon";
+            this.infoIcon.ShadowDecoration.Parent = this.infoIcon;
+            this.infoIcon.Size = new System.Drawing.Size(30, 30);
+            this.infoIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.infoIcon.TabIndex = 37;
+            this.infoIcon.TabStop = false;
+            this.infoIcon.Visible = false;
             // 
             // FrmAddUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(660, 380);
+            this.ClientSize = new System.Drawing.Size(660, 423);
+            this.Controls.Add(this.infoIcon);
+            this.Controls.Add(this.infoText);
             this.Controls.Add(this.userPicture);
             this.Controls.Add(this.userId);
             this.Controls.Add(this.userPassword);
@@ -362,11 +391,14 @@
             this.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmAddUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FrmAddUser";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmAddUser_FormClosed);
+            this.Load += new System.EventHandler(this.FrmAddUser_Load);
             ((System.ComponentModel.ISupportInitialize)(this.userPicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.infoIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -391,5 +423,7 @@
         private System.Windows.Forms.Label label4;
         private Guna.UI2.WinForms.Guna2TextBox userPassword;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label infoText;
+        private Guna.UI2.WinForms.Guna2PictureBox infoIcon;
     }
 }

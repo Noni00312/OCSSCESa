@@ -1,4 +1,5 @@
-﻿using OCSSCESa.Helper;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using OCSSCESa.Helper;
 using Org.BouncyCastle.Asn1.Cmp;
 using System;
 using System.Collections.Generic;
@@ -40,6 +41,7 @@ namespace OCSSCESa
             loadingIndicator.Visible = false;
             usersFlowLayoutPanel.Visible = true;
         }
+
 
         private async Task DisplayAllUsersData()
         {
@@ -113,7 +115,8 @@ namespace OCSSCESa
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            FrmAddUser frmAddUser = new FrmAddUser(this);
+            FrmUsers frmUser = new FrmUsers();
+            FrmAddUser frmAddUser = new FrmAddUser(frmUser, isAdd:true);
             frmAddUser.ShowDialog(this);
         }
 
@@ -123,7 +126,6 @@ namespace OCSSCESa
 
             if (string.IsNullOrWhiteSpace(keyword))
             {
-                // If no keyword, reload all users
                 await RefreshDataSource();
                 return;
             }

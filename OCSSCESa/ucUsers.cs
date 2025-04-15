@@ -50,19 +50,14 @@ namespace OCSSCESa
 
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private async void btnDelete_Click(object sender, EventArgs e)
+        private async void deleteBtn_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to DELETE this data?", "DELETE DATA", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 string id = userId.Text;
                 string deleteQuery = "DELETE FROM adminTbl WHERE userId = @userId";
 
-                _crud.AddParameters("@userId",  id);
+                _crud.AddParameters("@userId", id);
 
                 bool isDataDeleted = _crud.ExecuteNonQuery(deleteQuery, true);
 
@@ -71,9 +66,7 @@ namespace OCSSCESa
                     SystemSounds.Asterisk.Play();
                     MessageBox.Show(this, "Data successfully DELETE.", "DELETE DATA", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Update data source
-                    await frmUser.RefreshDataSource();
-                    //await RefreshDataSource();
+                    await frmUser.RefreshDataSource();                
                 }
                 else
                 {
@@ -81,6 +74,12 @@ namespace OCSSCESa
                     MessageBox.Show(this, "Data failed to DELETE.", "DELETE DATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            FrmAddUser frmAddUser = new FrmAddUser(frmUser, userId.Text, false);
+            frmAddUser.ShowDialog(this);
         }
     }
 }

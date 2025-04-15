@@ -393,6 +393,7 @@
   <ItemGroup>
     <Content Include="Color pallete.txt" />
     <Content Include="ILLink\ILLink.Descriptors.LibraryBuild.xml" />
+    <None Include="Resources\icons8_info_squared_96px.png" />
     <None Include="Resources\icons8_add_50px.png" />
     <None Include="Resources\icons8_add_48px.png" />
     <None Include="Resources\icons8_remove_96px_1.png" />
