@@ -16,7 +16,7 @@ namespace OCSSCESa
         private readonly CRUD _crud = new CRUD();
         private DataTable _studentData;
         private string _studentName;
-        private FrmCandidate frmCandi; 
+        private FrmCandidate frmCandi;
         public bool addedNew = false;
         private readonly List<string> _columnNames = new List<string>
         {
@@ -25,7 +25,7 @@ namespace OCSSCESa
             "Year level", "Course"
         };
 
-        public FrmAddCandidates( FrmCandidate frmCandidate)
+        public FrmAddCandidates(FrmCandidate frmCandidate)
         {
             InitializeComponent();
             frmCandi = frmCandidate;
@@ -79,7 +79,7 @@ namespace OCSSCESa
                 this.Invoke((MethodInvoker)delegate
                 {
                     loadingIndicator.Visible = false;
-                    
+
                 });
             }
         }
@@ -97,7 +97,7 @@ namespace OCSSCESa
                 var contextMenu = new ContextMenuStrip();
                 var cellRectangle = studentListDatagrid.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false);
 
-                
+
 
                 var addCandidate = new ToolStripMenuItem("Add candidate")
                 {
@@ -105,7 +105,7 @@ namespace OCSSCESa
                     Image = Properties.Resources.icons8_add_48px
                 };
 
-              
+
 
                 addCandidate.Click += addCandidate_Click;
 
@@ -115,7 +115,7 @@ namespace OCSSCESa
             }
         }
 
-        private  void addCandidate_Click(object sender, EventArgs e)
+        private void addCandidate_Click(object sender, EventArgs e)
         {
 
             string studentName = studentListDatagrid.CurrentRow.Cells[1].Value?.ToString() + " " + studentListDatagrid.CurrentRow.Cells[2].Value?.ToString() + " " + studentListDatagrid.CurrentRow.Cells[3].Value?.ToString() + " " + studentListDatagrid.CurrentRow.Cells[4].Value?.ToString();
@@ -170,7 +170,7 @@ namespace OCSSCESa
             PublicHelper.DisplayData(studentListDatagrid, _studentData, _columnNames);
         }
 
-        private async  void SearchData()
+        private async void SearchData()
         {
             await RefreshDataSource().ConfigureAwait(false);
 
@@ -184,7 +184,9 @@ namespace OCSSCESa
             var filteredRows = _studentData.AsEnumerable()
                 .Where(row => row.Field<string>("studentId")?.ToUpperInvariant().Contains(searchTerm) == true ||
                              row.Field<string>("fName")?.ToUpperInvariant().Contains(searchTerm) == true ||
-                             row.Field<string>("lName")?.ToUpperInvariant().Contains(searchTerm) == true)
+                             row.Field<string>("lName")?.ToUpperInvariant().Contains(searchTerm) == true ||
+                             row.Field<string>("course")?.ToUpperInvariant().Contains(searchTerm) == true ||
+                             row.Field<string>("yearLevel")?.ToUpperInvariant().Contains(searchTerm) == true)
                 .ToList();
 
             if (filteredRows.Count > 0)

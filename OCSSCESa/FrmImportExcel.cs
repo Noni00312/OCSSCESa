@@ -230,7 +230,7 @@ namespace OCSSCESa
 
         private bool ImportDataToDatabase()
         {
-            if (excelDataGrid.Columns.Count != 12)
+            if (excelDataGrid.Columns.Count != 13)
             {
                 SystemSounds.Hand.Play();
                 MessageBox.Show("Column count doesn't match the required count.",
@@ -262,7 +262,7 @@ namespace OCSSCESa
                     {
                         try
                         {
-                            string insertQuery = @"INSERT INTO tempTbl(studentId, fName, mName, lName, suffix, birthdate, age, gender, civilStatus, address, contactNumber, yearLevel) VALUES (@studentId, @fName, @mName, @lName, @suffix, @birthdate, @age, @gender, @civilStatus, @address, @contactNumber, @yearLevel)";
+                            string insertQuery = @"INSERT INTO tempTbl(studentId, fName, mName, lName, suffix, birthdate, age, gender, civilStatus, address, contactNumber, yearLevel, course) VALUES (@studentId, @fName, @mName, @lName, @suffix, @birthdate, @age, @gender, @civilStatus, @address, @contactNumber, @yearLevel, @course)";
 
                             for (int rowNumber = 0; rowNumber < excelDataGrid.Rows.Count; rowNumber++)
                             {
@@ -282,6 +282,7 @@ namespace OCSSCESa
                                     command.Parameters.AddWithValue("@address", excelDataGrid.Rows[rowNumber].Cells[9]?.Value?.ToString() ?? "");
                                     command.Parameters.AddWithValue("@contactNumber", excelDataGrid.Rows[rowNumber].Cells[10]?.Value?.ToString() ?? "");
                                     command.Parameters.AddWithValue("@yearLevel", excelDataGrid.Rows[rowNumber].Cells[11]?.Value?.ToString() ?? "");
+                                    command.Parameters.AddWithValue("@course", excelDataGrid.Rows[rowNumber].Cells[12]?.Value?.ToString() ?? "");
 
 
                                     command.ExecuteNonQuery();
