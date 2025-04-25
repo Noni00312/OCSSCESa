@@ -60,6 +60,8 @@
             this.dragControl = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.formShadow = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
             this.elipse = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.courses = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ageNumeric)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,7 +80,7 @@
             this.cancelButton.HoverState.Parent = this.cancelButton;
             this.cancelButton.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.cancelButton.ImageSize = new System.Drawing.Size(30, 30);
-            this.cancelButton.Location = new System.Drawing.Point(22, 487);
+            this.cancelButton.Location = new System.Drawing.Point(23, 538);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.ShadowDecoration.Parent = this.cancelButton;
             this.cancelButton.Size = new System.Drawing.Size(575, 53);
@@ -101,7 +103,7 @@
             this.saveButton.Image = global::OCSSCESa.Properties.Resources.icons8_save_96px;
             this.saveButton.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.saveButton.ImageSize = new System.Drawing.Size(30, 30);
-            this.saveButton.Location = new System.Drawing.Point(22, 428);
+            this.saveButton.Location = new System.Drawing.Point(23, 479);
             this.saveButton.Name = "saveButton";
             this.saveButton.ShadowDecoration.Parent = this.saveButton;
             this.saveButton.Size = new System.Drawing.Size(575, 53);
@@ -246,7 +248,7 @@
             // label
             // 
             this.label.AutoSize = true;
-            this.label.Location = new System.Drawing.Point(19, 355);
+            this.label.Location = new System.Drawing.Point(20, 406);
             this.label.Name = "label";
             this.label.Size = new System.Drawing.Size(90, 13);
             this.label.TabIndex = 41;
@@ -300,7 +302,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(213, 356);
+            this.label10.Location = new System.Drawing.Point(214, 407);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(48, 13);
             this.label10.TabIndex = 43;
@@ -360,7 +362,7 @@
             this.contactNumberText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.contactNumberText.HoverState.BorderColor = System.Drawing.Color.LightCoral;
             this.contactNumberText.HoverState.Parent = this.contactNumberText;
-            this.contactNumberText.Location = new System.Drawing.Point(22, 371);
+            this.contactNumberText.Location = new System.Drawing.Point(23, 422);
             this.contactNumberText.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
             this.contactNumberText.Name = "contactNumberText";
             this.contactNumberText.PasswordChar = '\0';
@@ -476,7 +478,7 @@
             this.addressText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.addressText.HoverState.BorderColor = System.Drawing.Color.LightCoral;
             this.addressText.HoverState.Parent = this.addressText;
-            this.addressText.Location = new System.Drawing.Point(215, 371);
+            this.addressText.Location = new System.Drawing.Point(216, 422);
             this.addressText.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
             this.addressText.Name = "addressText";
             this.addressText.PasswordChar = '\0';
@@ -585,12 +587,45 @@
             this.elipse.BorderRadius = 0;
             this.elipse.TargetControl = this;
             // 
+            // courses
+            // 
+            this.courses.BackColor = System.Drawing.Color.Transparent;
+            this.courses.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.courses.BorderRadius = 8;
+            this.courses.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.courses.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.courses.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.courses.FocusedColor = System.Drawing.Color.Empty;
+            this.courses.FocusedState.Parent = this.courses;
+            this.courses.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.courses.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.courses.FormattingEnabled = true;
+            this.courses.HoverState.Parent = this.courses;
+            this.courses.ItemHeight = 30;
+            this.courses.ItemsAppearance.Parent = this.courses;
+            this.courses.Location = new System.Drawing.Point(21, 365);
+            this.courses.Name = "courses";
+            this.courses.ShadowDecoration.Parent = this.courses;
+            this.courses.Size = new System.Drawing.Size(576, 36);
+            this.courses.TabIndex = 45;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(18, 349);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(43, 13);
+            this.label12.TabIndex = 47;
+            this.label12.Text = "Course";
+            // 
             // FrmEditStudentData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(615, 560);
+            this.ClientSize = new System.Drawing.Size(615, 614);
+            this.Controls.Add(this.courses);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.ageNumeric);
@@ -667,5 +702,7 @@
         private Guna.UI2.WinForms.Guna2DragControl dragControl;
         private Guna.UI2.WinForms.Guna2ShadowForm formShadow;
         private Guna.UI2.WinForms.Guna2Elipse elipse;
+        private Guna.UI2.WinForms.Guna2ComboBox courses;
+        private System.Windows.Forms.Label label12;
     }
 }

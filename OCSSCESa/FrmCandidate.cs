@@ -20,7 +20,7 @@ namespace OCSSCESa
 
         List<String> columnNames = new List<String>()
         {
-            "Candidate Id", "Student ID", "Full name", "Year level", "Position", "Candidate Picture"
+            "Candidate Id", "Student ID", "Full name", "Year level","Course", "Position", "Candidate Picture"
         };
 
         public FrmCandidate()
@@ -35,7 +35,7 @@ namespace OCSSCESa
             {
 
 
-                string query = "SELECT c.candidateId, i.studentId, CONCAT(' ', i.fName, i.mName, i.lName, i.suffix) AS fullName, i.yearLevel, p.positionName, c.candidatePic " +
+                string query = "SELECT c.candidateId, i.studentId, CONCAT(' ', i.fName, i.mName, i.lName, i.suffix) AS fullName, i.yearLevel, i.course,  p.positionName, c.candidatePic " +
                     "FROM studentInfoTbl i " +
                     "INNER JOIN candidateTbl c ON i.studentId = c.studentId " +
                     "INNER JOIN positionTbl p ON c.positionId = p.positionId;";
@@ -225,7 +225,8 @@ namespace OCSSCESa
             var filteredRows = _candidatesData.AsEnumerable()
                 .Where(row => row.Field<string>("studentId")?.ToUpper().Contains(searchTerm) == true ||
                              row.Field<string>("fullName")?.ToUpper().Contains(searchTerm) == true ||
-                             row.Field<string>("positionName")?.ToUpper().Contains(searchTerm) == true)
+                             row.Field<string>("positionName")?.ToUpper().Contains(searchTerm) == true ||
+                             row.Field<string>("course")?.ToUpper().Contains(searchTerm) == true)
                 .ToList();
 
             if (filteredRows.Any())

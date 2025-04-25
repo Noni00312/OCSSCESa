@@ -143,6 +143,16 @@ namespace OCSSCESa.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_available_updates_96px_1 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_available_updates_96px_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_circled_user_male_skin_type_7_480px {
             get {
                 object obj = ResourceManager.GetObject("icons8_circled_user_male_skin_type_7_480px", resourceCulture);
@@ -223,9 +233,29 @@ namespace OCSSCESa.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_microsoft_excel_96px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_microsoft_excel_96px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_name_64px {
             get {
                 object obj = ResourceManager.GetObject("icons8_name_64px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_pdf_96px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_pdf_96px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

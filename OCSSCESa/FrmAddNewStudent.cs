@@ -52,7 +52,7 @@ namespace OCSSCESa
 
             try
             {
-                string insertQuery = "INSERT INTO studentinfotbl(studentId, fName, lName, mName, suffix, birthdate, age, gender, civilStatus, address, contactNumber, yearLevel) VALUES (@studentId,  @fName, @lName, @mName, @suffix, @birthday, @age, @gender, @civilStatus, @address, @contactNumber, @yearLevel);";
+                string insertQuery = "INSERT INTO studentinfotbl(studentId, fName, lName, mName, suffix, birthdate, age, gender, civilStatus, address, contactNumber, yearLevel, course) VALUES (@studentId,  @fName, @lName, @mName, @suffix, @birthday, @age, @gender, @civilStatus, @address, @contactNumber, @yearLevel, @course);";
 
                 crud.AddParameters("@studentId", studentIdText.Text, DbType.String); 
                 crud.AddParameters("@fName", fNameText.Text, DbType.String); 
@@ -66,6 +66,7 @@ namespace OCSSCESa
                 crud.AddParameters("@address", addressText.Text, DbType.String); 
                 crud.AddParameters("@contactNumber", contactNumberText.Text, DbType.String); 
                 crud.AddParameters("@yearLevel", yearLevelComboBox.Text, DbType.String);
+                crud.AddParameters("@course", courses.Text, DbType.String);
 
 
                 bool isInsertSuccess = crud.ExecuteNonQuery(insertQuery, true);
@@ -93,7 +94,7 @@ namespace OCSSCESa
         private void AddNewStudent_Load(object sender, EventArgs e)
         {
             formShadow.SetShadowForm(this);
-          
+            PopulateCourses();
         }
 
         private void birthdayDateTimePicker_ValueChanged(object sender, EventArgs e)
@@ -111,12 +112,44 @@ namespace OCSSCESa
             ageNumeric.Value = age;
         }
 
+        public void PopulateCourses()
+        {
+            CRUD crud = new CRUD();
+
+            courses.Items.Clear();
+            try
+            {
+                string query = "SELECT * FROM coursesTbl;";
+
+                DataTable result = crud.ReadData(query, true);
+
+                if (result.Rows.Count > 0)
+                {
+                   foreach (DataRow row in result.Rows)
+                    {
+                        courses.Items.Add(row["courseName"]);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error reading courses: ", ex.Message);
+            }
+         
+        }
+
         private async void FrmAddNewStudent_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (_frmStudent != null)
             {
                 //await _frmStudent.RefreshDataSource();
             }
+        }
+
+        private void addCourse_Click(object sender, EventArgs e)
+        {
+            FrmCourses frmCourses = new FrmCourses(this);
+            frmCourses.ShowDialog(this);
         }
     }
 }

@@ -25,7 +25,7 @@ namespace OCSSCESa
         {
             "Student ID", "First name", "Middle name", "Last name", "Suffix",
             "Birthday",  "Age", "Gender", "Status", "Address", "Contact number",
-            "Year level"
+            "Year level ", "Course"
         };
 
         public FrmStudents()
@@ -41,7 +41,7 @@ namespace OCSSCESa
            
 
                 string query = "SELECT studentId, fName, mName, lName, suffix, birthdate, age, gender, " +
-                                "civilStatus, address, contactNumber, yearLevel FROM studentinfotbl";
+                                "civilStatus, address, contactNumber, yearLevel, course FROM studentinfotbl";
 
                 DataTable students = await Task.Run(()=> crud.ReadData(query, false));
 
@@ -220,10 +220,11 @@ namespace OCSSCESa
                     string yearLevel = selectedRow.Cells[9].Value?.ToString();
                     string contactNumber = selectedRow.Cells[10].Value?.ToString();
                     string address = selectedRow.Cells[11].Value?.ToString();
+                    string course = selectedRow.Cells[12].Value?.ToString();
 
                     FrmEditStudentData editStudentData = new FrmEditStudentData(
                         studentId, fName, mName, lName, suffix, birthday,
-                        age, gender, civilStatus, yearLevel, contactNumber, address, this);
+                        age, gender, civilStatus, yearLevel, contactNumber, address,course, this);
                     editStudentData.ShowDialog(this);
                 }
             }
@@ -272,7 +273,8 @@ namespace OCSSCESa
             var filteredRows = _votersData.AsEnumerable()
                 .Where(row => row.Field<string>("studentId")?.ToUpper().Contains(searchTerm) == true ||
                              row.Field<string>("fName")?.ToUpper().Contains(searchTerm) == true ||
-                             row.Field<string>("lName")?.ToUpper().Contains(searchTerm) == true)
+                             row.Field<string>("lName")?.ToUpper().Contains(searchTerm) == true ||
+                             row.Field<string>("course")?.ToUpper().Contains(searchTerm) == true)
                 .ToList();
 
             if (filteredRows.Any())

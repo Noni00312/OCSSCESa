@@ -41,6 +41,7 @@
             this.dropdown = new Guna.UI2.WinForms.Guna2ComboBox();
             this.windowLabel = new System.Windows.Forms.Label();
             this.mainPanel = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnGenerate = new Guna.UI2.WinForms.Guna2Button();
             this.sidebarPanel.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
@@ -50,6 +51,7 @@
             // sidebarPanel
             // 
             this.sidebarPanel.Controls.Add(this.resultsButton);
+            this.sidebarPanel.Controls.Add(this.btnGenerate);
             this.sidebarPanel.Controls.Add(this.usersButton);
             this.sidebarPanel.Controls.Add(this.candidatesButton);
             this.sidebarPanel.Controls.Add(this.studentButton);
@@ -77,7 +79,7 @@
             this.resultsButton.Image = global::OCSSCESa.Properties.Resources.icons8_print_64px;
             this.resultsButton.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.resultsButton.ImageSize = new System.Drawing.Size(32, 32);
-            this.resultsButton.Location = new System.Drawing.Point(0, 304);
+            this.resultsButton.Location = new System.Drawing.Point(0, 357);
             this.resultsButton.Name = "resultsButton";
             this.resultsButton.ShadowDecoration.Parent = this.resultsButton;
             this.resultsButton.Size = new System.Drawing.Size(260, 53);
@@ -278,6 +280,30 @@
             this.mainPanel.Size = new System.Drawing.Size(747, 497);
             this.mainPanel.TabIndex = 1;
             // 
+            // btnGenerate
+            // 
+            this.btnGenerate.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(92)))), ((int)(((byte)(113)))));
+            this.btnGenerate.CheckedState.Parent = this.btnGenerate;
+            this.btnGenerate.CustomImages.Parent = this.btnGenerate;
+            this.btnGenerate.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnGenerate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnGenerate.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerate.ForeColor = System.Drawing.Color.White;
+            this.btnGenerate.HoverState.FillColor = System.Drawing.Color.Maroon;
+            this.btnGenerate.HoverState.Parent = this.btnGenerate;
+            this.btnGenerate.Image = global::OCSSCESa.Properties.Resources.icons8_available_updates_96px_1;
+            this.btnGenerate.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnGenerate.ImageSize = new System.Drawing.Size(32, 32);
+            this.btnGenerate.Location = new System.Drawing.Point(0, 304);
+            this.btnGenerate.Name = "btnGenerate";
+            this.btnGenerate.ShadowDecoration.Parent = this.btnGenerate;
+            this.btnGenerate.Size = new System.Drawing.Size(260, 53);
+            this.btnGenerate.TabIndex = 6;
+            this.btnGenerate.Text = "Generate Code";
+            this.btnGenerate.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnGenerate.TextOffset = new System.Drawing.Point(3, 0);
+            this.btnGenerate.Click += new System.EventHandler(this.btnGenerate_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -320,5 +346,6 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private Guna.UI2.WinForms.Guna2PictureBox userPicture;
         private Guna.UI2.WinForms.Guna2ComboBox dropdown;
+        private Guna.UI2.WinForms.Guna2Button btnGenerate;
     }
 }

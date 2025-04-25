@@ -1,4 +1,5 @@
-﻿using OCSSCESa.Helper;
+﻿using NPOI.SS.Formula.Atp;
+using OCSSCESa.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,7 +30,7 @@ namespace OCSSCESa
         {
             "Student ID", "First name", "Middle name", "Last name", "Suffix",
             "Birthday",  "Age", "Gender", "Status", "Address", "Contact number",
-            "Year level"
+            "Year level", "Course"
         };
 
         private async Task ReadData()
@@ -37,7 +38,7 @@ namespace OCSSCESa
             try
             {
                 string query = "SELECT studentId, fName, mName, lName, suffix, birthdate, age, gender, " +
-                                "civilStatus, address, contactNumber, yearLevel FROM archiveTbl";
+                                "civilStatus, address, contactNumber, yearLevel, course FROM archiveTbl";
 
                 DataTable archive = await Task.Run(() => crud.ReadData(query, false));
 
@@ -97,7 +98,7 @@ namespace OCSSCESa
                 {
                     var search = archiveData.AsEnumerable()
                                         .Where(row => !row.IsNull("studentId") && row.Field<string>("studentId").Contains       (searchArchiveText.Text) || row.Field<string>("fName").Contains(searchArchiveText.Text)
-                                        || row.Field<string>("lName").Contains(searchArchiveText.Text));
+                                        || row.Field<string>("lName").Contains(searchArchiveText.Text) || row.Field<string>("course").Contains(searchArchiveText.Text));
 
                     if (search.Any())
                     {

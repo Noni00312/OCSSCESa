@@ -28,34 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.closeButton = new Guna.UI2.WinForms.Guna2ControlBox();
             this.logoPictureBox = new Guna.UI2.WinForms.Guna2PictureBox();
             this.loginButton = new Guna.UI2.WinForms.Guna2Button();
+            this.closeButton = new Guna.UI2.WinForms.Guna2ControlBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             this.SuspendLayout();
-            // 
-            // closeButton
-            // 
-            this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.closeButton.Animated = true;
-            this.closeButton.BackColor = System.Drawing.Color.Transparent;
-            this.closeButton.BorderRadius = 16;
-            this.closeButton.Cursor = System.Windows.Forms.Cursors.Default;
-            this.closeButton.FillColor = System.Drawing.Color.WhiteSmoke;
-            this.closeButton.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(88)))));
-            this.closeButton.HoverState.IconColor = System.Drawing.Color.WhiteSmoke;
-            this.closeButton.HoverState.Parent = this.closeButton;
-            this.closeButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.closeButton.Location = new System.Drawing.Point(1004, 12);
-            this.closeButton.Name = "closeButton";
-            this.closeButton.PressedColor = System.Drawing.Color.WhiteSmoke;
-            this.closeButton.ShadowDecoration.Parent = this.closeButton;
-            this.closeButton.Size = new System.Drawing.Size(32, 32);
-            this.closeButton.TabIndex = 17;
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // logoPictureBox
             // 
@@ -92,6 +72,26 @@
             this.loginButton.TabIndex = 24;
             this.loginButton.Text = "Login";
             this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
+            // 
+            // closeButton
+            // 
+            this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.closeButton.Animated = true;
+            this.closeButton.BackColor = System.Drawing.Color.Transparent;
+            this.closeButton.BorderRadius = 16;
+            this.closeButton.Cursor = System.Windows.Forms.Cursors.Default;
+            this.closeButton.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.closeButton.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(88)))));
+            this.closeButton.HoverState.IconColor = System.Drawing.Color.WhiteSmoke;
+            this.closeButton.HoverState.Parent = this.closeButton;
+            this.closeButton.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.closeButton.Location = new System.Drawing.Point(1004, 12);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.PressedColor = System.Drawing.Color.WhiteSmoke;
+            this.closeButton.ShadowDecoration.Parent = this.closeButton;
+            this.closeButton.Size = new System.Drawing.Size(32, 32);
+            this.closeButton.TabIndex = 17;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // label1
             // 
@@ -155,9 +155,9 @@
         }
 
         #endregion
-        private Guna.UI2.WinForms.Guna2ControlBox closeButton;
         private Guna.UI2.WinForms.Guna2PictureBox logoPictureBox;
         private Guna.UI2.WinForms.Guna2Button loginButton;
+        private Guna.UI2.WinForms.Guna2ControlBox closeButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

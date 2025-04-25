@@ -60,6 +60,9 @@
             this.dragControl = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.contactNumberText = new Guna.UI2.WinForms.Guna2TextBox();
             this.label = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.courses = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.addCourse = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.ageNumeric)).BeginInit();
             this.SuspendLayout();
             // 
@@ -423,7 +426,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(213, 347);
+            this.label10.Location = new System.Drawing.Point(214, 401);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(48, 13);
             this.label10.TabIndex = 16;
@@ -482,7 +485,7 @@
             this.cancelButton.HoverState.Parent = this.cancelButton;
             this.cancelButton.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.cancelButton.ImageSize = new System.Drawing.Size(30, 30);
-            this.cancelButton.Location = new System.Drawing.Point(22, 478);
+            this.cancelButton.Location = new System.Drawing.Point(22, 532);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.ShadowDecoration.Parent = this.cancelButton;
             this.cancelButton.Size = new System.Drawing.Size(575, 53);
@@ -507,7 +510,7 @@
             this.addressText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.addressText.HoverState.BorderColor = System.Drawing.Color.LightCoral;
             this.addressText.HoverState.Parent = this.addressText;
-            this.addressText.Location = new System.Drawing.Point(215, 362);
+            this.addressText.Location = new System.Drawing.Point(216, 416);
             this.addressText.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
             this.addressText.Name = "addressText";
             this.addressText.PasswordChar = '\0';
@@ -533,7 +536,7 @@
             this.saveButton.Image = global::OCSSCESa.Properties.Resources.icons8_save_96px;
             this.saveButton.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.saveButton.ImageSize = new System.Drawing.Size(30, 30);
-            this.saveButton.Location = new System.Drawing.Point(22, 419);
+            this.saveButton.Location = new System.Drawing.Point(22, 473);
             this.saveButton.Name = "saveButton";
             this.saveButton.ShadowDecoration.Parent = this.saveButton;
             this.saveButton.Size = new System.Drawing.Size(575, 53);
@@ -563,7 +566,7 @@
             this.contactNumberText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.contactNumberText.HoverState.BorderColor = System.Drawing.Color.LightCoral;
             this.contactNumberText.HoverState.Parent = this.contactNumberText;
-            this.contactNumberText.Location = new System.Drawing.Point(22, 362);
+            this.contactNumberText.Location = new System.Drawing.Point(23, 416);
             this.contactNumberText.Margin = new System.Windows.Forms.Padding(11, 12, 11, 12);
             this.contactNumberText.Name = "contactNumberText";
             this.contactNumberText.PasswordChar = '\0';
@@ -577,27 +580,83 @@
             // label
             // 
             this.label.AutoSize = true;
-            this.label.Location = new System.Drawing.Point(19, 346);
+            this.label.Location = new System.Drawing.Point(20, 400);
             this.label.Name = "label";
             this.label.Size = new System.Drawing.Size(90, 13);
             this.label.TabIndex = 16;
             this.label.Text = "Contact number";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(19, 340);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(43, 13);
+            this.label12.TabIndex = 16;
+            this.label12.Text = "Course";
+            // 
+            // courses
+            // 
+            this.courses.BackColor = System.Drawing.Color.Transparent;
+            this.courses.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.courses.BorderRadius = 8;
+            this.courses.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.courses.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.courses.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.courses.FocusedColor = System.Drawing.Color.Empty;
+            this.courses.FocusedState.Parent = this.courses;
+            this.courses.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.courses.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.courses.FormattingEnabled = true;
+            this.courses.HoverState.Parent = this.courses;
+            this.courses.ItemHeight = 30;
+            this.courses.ItemsAppearance.Parent = this.courses;
+            this.courses.Location = new System.Drawing.Point(22, 356);
+            this.courses.Name = "courses";
+            this.courses.ShadowDecoration.Parent = this.courses;
+            this.courses.Size = new System.Drawing.Size(440, 36);
+            this.courses.TabIndex = 9;
+            // 
+            // addCourse
+            // 
+            this.addCourse.BorderRadius = 8;
+            this.addCourse.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(92)))), ((int)(((byte)(113)))));
+            this.addCourse.CheckedState.Parent = this.addCourse;
+            this.addCourse.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.addCourse.CustomImages.Parent = this.addCourse;
+            this.addCourse.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.addCourse.Font = new System.Drawing.Font("Poppins SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addCourse.ForeColor = System.Drawing.Color.White;
+            this.addCourse.HoverState.FillColor = System.Drawing.Color.Maroon;
+            this.addCourse.HoverState.Parent = this.addCourse;
+            this.addCourse.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.addCourse.ImageSize = new System.Drawing.Size(30, 30);
+            this.addCourse.Location = new System.Drawing.Point(468, 355);
+            this.addCourse.Name = "addCourse";
+            this.addCourse.ShadowDecoration.Parent = this.addCourse;
+            this.addCourse.Size = new System.Drawing.Size(129, 38);
+            this.addCourse.TabIndex = 12;
+            this.addCourse.Text = "Add new ";
+            this.addCourse.Click += new System.EventHandler(this.addCourse_Click);
             // 
             // FrmAddNewStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(615, 560);
+            this.ClientSize = new System.Drawing.Size(615, 614);
             this.Controls.Add(this.cancelButton);
+            this.Controls.Add(this.addCourse);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.ageNumeric);
+            this.Controls.Add(this.courses);
             this.Controls.Add(this.yearLevelComboBox);
             this.Controls.Add(this.statusComboBox);
             this.Controls.Add(this.genderComboBox);
             this.Controls.Add(this.birthdayDateTimePicker);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label3);
@@ -665,5 +724,8 @@
         private Guna.UI2.WinForms.Guna2DragControl dragControl;
         private System.Windows.Forms.Label label;
         private Guna.UI2.WinForms.Guna2TextBox contactNumberText;
+        private Guna.UI2.WinForms.Guna2ComboBox courses;
+        private System.Windows.Forms.Label label12;
+        private Guna.UI2.WinForms.Guna2Button addCourse;
     }
 }

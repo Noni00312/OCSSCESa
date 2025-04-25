@@ -114,6 +114,7 @@
             // 
             // studentNameLabel
             // 
+            this.studentNameLabel.AutoEllipsis = true;
             this.studentNameLabel.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.studentNameLabel.Location = new System.Drawing.Point(55, 73);
             this.studentNameLabel.Name = "studentNameLabel";
@@ -133,6 +134,7 @@
             // 
             // studentIdLabel
             // 
+            this.studentIdLabel.AutoEllipsis = true;
             this.studentIdLabel.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.studentIdLabel.Location = new System.Drawing.Point(55, 122);
             this.studentIdLabel.Name = "studentIdLabel";

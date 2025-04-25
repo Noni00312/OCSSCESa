@@ -30,12 +30,14 @@ namespace OCSSCESa
         private string _yearLevel;
         private string _contactNumber;
         private string _address;
+        private string _course;
 
 
-        public FrmEditStudentData(string studentId, string fName, string mName, string lName, string suffix, string birthday, string age, string gender, string civilStatus, string yearLevel, string contactNumber, string address, FrmStudents frmStudent)
+        public FrmEditStudentData(string studentId, string fName, string mName, string lName, string suffix, string birthday, string age, string gender, string civilStatus, string yearLevel, string contactNumber, string address,string course, FrmStudents frmStudent)
         {
             InitializeComponent();
             _frmStudent = frmStudent;
+            PopulateCourses();
             try 
             {
                 string[] formats = { "yyyy-MM-dd", "MM/dd/yyyy", "dd-MM-yyyy", "M/d/yyyy", "d/M/yyyy" };
@@ -95,8 +97,10 @@ namespace OCSSCESa
                 yearLevelComboBox.SelectedIndex = yl;
                 contactNumberText.Text = contactNumber;
                 addressText.Text = address;
+                courses.SelectedIndex = courses.FindStringExact(course);
+
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
@@ -106,6 +110,33 @@ namespace OCSSCESa
         private void FrmEditStudentData_Load(object sender, EventArgs e)
         {
             formShadow.SetShadowForm(this);
+           
+        }
+
+        public void PopulateCourses()
+        {
+            CRUD crud = new CRUD();
+
+            courses.Items.Clear();
+            try
+            {
+                string query = "SELECT * FROM coursesTbl;";
+
+                DataTable result = crud.ReadData(query, true);
+
+                if (result.Rows.Count > 0)
+                {
+                    foreach (DataRow row in result.Rows)
+                    {
+                        courses.Items.Add(row["courseName"]);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error reading courses: ", ex.Message);
+            }
+
         }
 
         private void saveButton_Click(object sender, EventArgs e)
@@ -134,7 +165,8 @@ namespace OCSSCESa
                               civilStatus = @civilStatus,
                               address = @address,
                               contactNumber = @contactNumber,
-                              yearLevel = @yearLevel
+                              yearLevel = @yearLevel,
+                              course = @course
                           WHERE studentId = @studentId";
 
                 // Add parameters (same as your insert but with WHERE clause)
@@ -150,6 +182,7 @@ namespace OCSSCESa
                 crud.AddParameters("@address", addressText.Text, DbType.String);
                 crud.AddParameters("@contactNumber", contactNumberText.Text, DbType.String);
                 crud.AddParameters("@yearLevel", yearLevelComboBox.Text, DbType.String);
+                crud.AddParameters("@course", courses.Text, DbType.String);
 
                 bool isUpdateSuccess = crud.ExecuteNonQuery(updateQuery, true);
 

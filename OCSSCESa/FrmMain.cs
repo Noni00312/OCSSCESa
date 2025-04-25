@@ -92,5 +92,11 @@ namespace OCSSCESa
                 }
             }
         }
+
+        private void btnGenerate_Click(object sender, EventArgs e)
+        {
+            FrmGenerateCode frmGenerateCode = new FrmGenerateCode();
+            frmGenerateCode.ShowDialog();
+        }  
     }
 }

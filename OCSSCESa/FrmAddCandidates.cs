@@ -22,7 +22,7 @@ namespace OCSSCESa
         {
             "Student ID", "First name", "Middle name", "Last name", "Suffix",
             "Birthday", "Age", "Gender", "Status", "Address", "Contact number",
-            "Year level"
+            "Year level", "Course"
         };
 
         public FrmAddCandidates( FrmCandidate frmCandidate)
@@ -36,8 +36,8 @@ namespace OCSSCESa
             try
             {
                 const string query = @"SELECT studentId, fName, mName, lName, suffix, birthdate, 
-                                       age, gender, civilStatus, address, contactNumber, yearLevel 
-                                       FROM studentinfotbl";
+                                       age, gender, civilStatus, address, contactNumber, yearLevel, course 
+                                       FROM studentInfoTbl";
 
                 var students = await Task.Run(() => _crud.ReadData(query, false)).ConfigureAwait(false);
 
