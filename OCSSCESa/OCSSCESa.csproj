@@ -307,6 +307,12 @@
     <Compile Include="FrmMockup.Designer.cs">
       <DependentUpon>FrmMockup.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmResult.Designer.cs">
+      <DependentUpon>FrmResult.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmSearch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -404,6 +410,9 @@
     <EmbeddedResource Include="FrmMockup.resx">
       <DependentUpon>FrmMockup.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmResult.resx">
+      <DependentUpon>FrmResult.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmSearch.resx">
       <DependentUpon>FrmSearch.cs</DependentUpon>
     </EmbeddedResource>
@@ -429,6 +438,9 @@
     <Content Include="Reports\RPTStudentList.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="Reports\RPTResult.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="ucUsers.resx">
       <DependentUpon>ucUsers.cs</DependentUpon>
     </EmbeddedResource>
@@ -475,6 +487,7 @@
     <None Include="Resources\icons8_available_updates_96px_1.png" />
     <None Include="Resources\icons8_microsoft_excel_96px.png" />
     <None Include="Resources\icons8_pdf_96px.png" />
+    <None Include="Resources\icons8_close_32px.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

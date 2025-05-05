@@ -9,7 +9,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>STUDENT  VOTING  CODE </Value>
+                <Value>ELECTION RESULT  </Value>
                 <Style>
                   <FontFamily>Times New Roman</FontFamily>
                   <FontSize>14pt</FontSize>
@@ -23,7 +23,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>0.4287cm</Top>
+        <Top>0.33914cm</Top>
         <Left>5.36807cm</Left>
         <Height>0.89104cm</Height>
         <Width>8.32083cm</Width>
@@ -36,102 +36,31 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
-      <Rectangle Name="Rectangle1">
+      <Rectangle Name="Rectangle2">
         <ReportItems>
-          <Tablix Name="Tablix1">
+          <Tablix Name="Tablix2">
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>2.19502cm</Width>
+                  <Width>2.13368in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.03827cm</Width>
+                  <Width>2.13368in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.52945cm</Width>
+                  <Width>1.87688in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.87952cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>7.11827cm</Width>
+                  <Width>0.80729in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.77198cm</Height>
+                  <Height>0.25in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox23">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>Code</Value>
-                                  <Style>
-                                    <FontFamily>Times New Roman</FontFamily>
-                                    <FontSize>12pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox23</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox36">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>Student ID</Value>
-                                  <Style>
-                                    <FontFamily>Times New Roman</FontFamily>
-                                    <FontSize>12pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox36</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox38">
+                        <Textbox Name="Textbox21">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -141,7 +70,7 @@
                                   <Value>Name</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontSize>14pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -149,7 +78,7 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox38</rd:DefaultName>
+                          <rd:DefaultName>Textbox21</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -165,17 +94,17 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox27">
+                        <Textbox Name="Textbox24">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Year Level</Value>
+                                  <Value>Position</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontSize>14pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -183,7 +112,7 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox27</rd:DefaultName>
+                          <rd:DefaultName>Textbox24</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -199,17 +128,17 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox31">
+                        <Textbox Name="Textbox26">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Course</Value>
+                                  <Value>Vote Count</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontSize>14pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -217,7 +146,41 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox31</rd:DefaultName>
+                          <rd:DefaultName>Textbox26</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox28">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Ranking</Value>
+                                  <Style>
+                                    <FontFamily>Times New Roman</FontFamily>
+                                    <FontSize>14pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox28</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -234,75 +197,8 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.74552cm</Height>
+                  <Height>0.25in</Height>
                   <TablixCells>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="uniqueCode">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!uniqueCode.Value</Value>
-                                  <Style>
-                                    <FontFamily>Times New Roman</FontFamily>
-                                    <FontSize>12pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>uniqueCode</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="studentId">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!studentId.Value</Value>
-                                  <Style>
-                                    <FontFamily>Times New Roman</FontFamily>
-                                    <FontSize>12pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>studentId</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="fullName">
@@ -338,14 +234,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="yearLevel">
+                        <Textbox Name="position">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!yearLevel.Value</Value>
+                                  <Value>=Fields!position.Value</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -355,7 +251,7 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>yearLevel</rd:DefaultName>
+                          <rd:DefaultName>position</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -371,29 +267,68 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="course">
+                        <Textbox Name="voteCount">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!course.Value</Value>
+                                  <Value>=Fields!voteCount.Value</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>course</rd:DefaultName>
+                          <rd:DefaultName>voteCount</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ranking">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!ranking.Value</Value>
+                                  <Style>
+                                    <FontFamily>Times New Roman</FontFamily>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>ranking</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -412,7 +347,6 @@
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
-                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
@@ -425,25 +359,22 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
-            <DataSetName>StudentCodeInfo</DataSetName>
-            <Top>0.56389cm</Top>
-            <Left>0.635cm</Left>
-            <Height>1.5175cm</Height>
-            <Width>17.76053cm</Width>
+            <DataSetName>Results</DataSetName>
+            <Top>0.53526in</Top>
+            <Left>0.26258in</Left>
+            <Height>0.5in</Height>
+            <Width>6.95153in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
-              <FontFamily>Poppins</FontFamily>
-              <FontSize>12pt</FontSize>
-              <VerticalAlign>Middle</VerticalAlign>
             </Style>
           </Tablix>
         </ReportItems>
         <KeepTogether>true</KeepTogether>
-        <Top>0.50591in</Top>
-        <Height>1in</Height>
-        <Width>7.48191in</Width>
+        <Top>0.48432in</Top>
+        <Height>1.46235in</Height>
+        <Width>7.48133in</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -452,34 +383,16 @@
         </Style>
       </Rectangle>
     </ReportItems>
-    <Height>2.81429in</Height>
-    <Style>
-      <Border>
-        <Style>None</Style>
-      </Border>
-    </Style>
+    <Height>3.98958in</Height>
+    <Style />
   </Body>
-  <Width>7.48191in</Width>
+  <Width>7.48133in</Width>
   <Page>
     <PageHeader>
-      <Height>1.21571in</Height>
+      <Height>1in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
-        <Image Name="Image1">
-          <Source>Embedded</Source>
-          <Value>ocLogo</Value>
-          <Sizing>FitProportional</Sizing>
-          <Top>0.55672cm</Top>
-          <Left>3.13309cm</Left>
-          <Height>2.35479cm</Height>
-          <Width>2.34667cm</Width>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-          </Style>
-        </Image>
         <Textbox Name="Textbox22">
           <CanGrow>true</CanGrow>
           <KeepTogether>true</KeepTogether>
@@ -573,11 +486,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox22</rd:DefaultName>
-          <Top>0.66683cm</Top>
-          <Left>5.65614cm</Left>
+          <Top>0.20272cm</Top>
+          <Left>5.73001cm</Left>
           <Height>2.13458cm</Height>
           <Width>10.06708cm</Width>
-          <ZIndex>1</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -588,6 +500,21 @@
             <PaddingBottom>2pt</PaddingBottom>
           </Style>
         </Textbox>
+        <Image Name="Image1">
+          <Source>Embedded</Source>
+          <Value>ocLogo</Value>
+          <Sizing>FitProportional</Sizing>
+          <Top>0.0926cm</Top>
+          <Left>3.20696cm</Left>
+          <Height>2.35479cm</Height>
+          <Width>2.34667cm</Width>
+          <ZIndex>1</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </Image>
       </ReportItems>
       <Style>
         <Border>
@@ -595,6 +522,8 @@
         </Border>
       </Style>
     </PageHeader>
+    <PageHeight>11.69in</PageHeight>
+    <PageWidth>8.27in</PageWidth>
     <LeftMargin>0.5in</LeftMargin>
     <RightMargin>0.5in</RightMargin>
     <TopMargin>0.5in</TopMargin>
@@ -609,41 +538,37 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>7ea87343-5110-4f0e-bdf8-05790e41ac17</rd:DataSourceID>
+      <rd:DataSourceID>48abe341-4c72-4ad8-a98a-c17a3c228775</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="StudentCodeInfo">
+    <DataSet Name="Results">
       <Query>
         <DataSourceName>DSStudents</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="studentId">
-          <DataField>studentId</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="fullName">
           <DataField>fullName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="yearLevel">
-          <DataField>yearLevel</DataField>
+        <Field Name="position">
+          <DataField>position</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="course">
-          <DataField>course</DataField>
+        <Field Name="voteCount">
+          <DataField>voteCount</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="uniqueCode">
-          <DataField>uniqueCode</DataField>
+        <Field Name="ranking">
+          <DataField>ranking</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DSStudents</rd:DataSetName>
         <rd:SchemaPath>D:\Visual Studio 2022 repos\OCSSCESa\OCSSCESa\DSStudents.xsd</rd:SchemaPath>
-        <rd:TableName>StudentCodeInfo</rd:TableName>
+        <rd:TableName>Result</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />
         <rd:TableAdapterName />
@@ -732,5 +657,5 @@ vXTad8F9Bt23Xt3fXjem8Rr+S0BaC3Zgar8b7tyyaZpMMXo9zIW/Ra59tc+IXjDi2+3Pbv2tIjFF/wB9
     </EmbeddedImage>
   </EmbeddedImages>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportID>07c8af82-468c-4e9e-9b86-5fed5630bca1</rd:ReportID>
+  <rd:ReportID>a61dac9f-0800-4003-80e4-201b56154176</rd:ReportID>
 </Report>

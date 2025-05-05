@@ -6,6 +6,10 @@ namespace OCSSCESa
 
     partial class DSStudents
     {
+        partial class ResultDataTable
+        {
+        }
+
         partial class StudentCodeInfoDataTable
         {
         }

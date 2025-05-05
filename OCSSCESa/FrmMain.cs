@@ -62,7 +62,8 @@ namespace OCSSCESa
 
         private void resultsButton_Click(object sender, EventArgs e)
         {
-
+            FrmResult frmResult = new FrmResult();
+            frmResult.Show(); 
         }
 
         private void profileButton_Click(object sender, EventArgs e)

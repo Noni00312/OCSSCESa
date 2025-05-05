@@ -1,4 +1,4 @@
-﻿using Microsoft.Reporting.WinForms; // ✅ Required for ReportDataSource
+﻿using Microsoft.Reporting.WinForms;
 using OCSSCESa.Helper;
 using System;
 using System.Collections.Generic;
@@ -20,12 +20,53 @@ namespace OCSSCESa
         public FrmGenerateCode()
         {
             InitializeComponent();
-            this.Load += FrmGenerateCode_Load; // ✅ Hook up event properly
+            this.Load += FrmGenerateCode_Load;
         }
 
         private  void FrmGenerateCode_Load(object sender, EventArgs e)
         {
+            PopulateCourses();
+        }
 
+        public void PopulateCourses()
+        {
+            CRUD crud = new CRUD();
+
+            course.Items.Clear();
+            try
+            {
+                string query = "SELECT * FROM coursesTbl;";
+
+                DataTable result = crud.ReadData(query, true);
+
+                if (result.Rows.Count > 0)
+                {
+                    foreach (DataRow row in result.Rows)
+                    {
+                        course.Items.Add(row["courseName"]);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error reading courses: ", ex.Message);
+            }
+
+        }
+
+
+        public async Task RefreshDataSource()
+        {
+            reportViewer1.Visible = false;
+            loadingIndicator.Visible = true;
+
+            await Task.Run(() => GenerateCode());
+
+            this.Invoke((MethodInvoker)delegate
+            {
+                loadingIndicator.Visible = false;
+                reportViewer1.Visible = true;
+            });
         }
 
         private async void GenerateCode()
@@ -35,9 +76,35 @@ namespace OCSSCESa
             crud.AddParameters("p_table_name", "codeTbl");
             crud.CallStoredProcedure("SP_TRUNCATE_TABLE", true);
 
-            // Step 1: Get all students
-            string selectQuery = "SELECT studentId, CONCAT_WS(' ', fName, mName, lName, suffix) AS fullName, yearLevel, course FROM studentInfoTbl";
-            DataTable students = crud.ReadData(selectQuery, false);
+            string selectQuery = "SELECT studentId, CONCAT_WS(' ', fName, mName, lName, suffix) AS fullName, yearLevel, course FROM studentInfoTbl ";
+
+            bool hasCondition = false;
+
+
+
+            this.Invoke((MethodInvoker)delegate
+            {
+                if (yearLevel.SelectedIndex != -1)
+                {
+                    selectQuery += "WHERE yearLevel = @yearLevel ";
+                    crud.AddParameters("@yearLevel", yearLevel.SelectedItem.ToString());
+                    hasCondition = true;
+                }
+
+                if (course.SelectedIndex != -1)
+                {
+                    if (hasCondition)
+                    {
+                        selectQuery += "AND course = @course ";
+                    }
+                    else
+                    {
+                        selectQuery += "WHERE course = @course ";
+                    }
+                    crud.AddParameters("@course", course.SelectedItem.ToString());
+                }
+            });
+            DataTable students = crud.ReadData(selectQuery, true);
 
             if (students == null || students.Rows.Count == 0)
             {
@@ -46,13 +113,14 @@ namespace OCSSCESa
                 return;
             }
 
-            // Step 2: Get existing codes to ensure uniqueness
             string checkQuery = "SELECT uniqueCode FROM codeTbl";
-            DataTable existingCodesTable = crud.ReadData("SELECT uniqueCode FROM codeTbl", false);
+
+            DataTable existingCodesTable = crud.ReadData(checkQuery, false);
+
             if (existingCodesTable == null)
             {
                 existingCodesTable = new DataTable();
-                existingCodesTable.Columns.Add("uniqueCode"); // So you can safely query against it
+                existingCodesTable.Columns.Add("uniqueCode");
             }
 
             HashSet<string> existingCodes = new HashSet<string>(existingCodesTable.Rows.Cast<DataRow>().Select(r => r["uniqueCode"].ToString()));
@@ -64,18 +132,17 @@ namespace OCSSCESa
                 string yearLevel = row["yearLevel"].ToString();
                 string course = row["course"].ToString();
 
-                // Step 3: Generate a unique 5-letter code
                 string uniqueCode;
                 do
                 {
                     uniqueCode = GenerateRandomCode(5);
                 } while (existingCodes.Contains(uniqueCode));
 
-                existingCodes.Add(uniqueCode); // Add to HashSet to prevent duplicates in same session
+                existingCodes.Add(uniqueCode); 
 
-                // Step 4: Insert into codeTbl
-                string insertQuery = "INSERT INTO codeTbl(studentId, fullName, yearLevel, course, uniqueCode) " +
-                                     "VALUES (@studentId, @fullName, @yearLevel, @course, @code)";
+
+                string insertQuery = "INSERT INTO codeTbl(studentId, fullName, yearLevel, course, uniqueCode, codeStatus) " +
+                                     "VALUES (@studentId, @fullName, @yearLevel, @course, @code, @codeStatus)";
 
                 crud.ClearSqlParameters();
                 crud.AddParameters("@studentId", studentId, DbType.String);
@@ -83,6 +150,7 @@ namespace OCSSCESa
                 crud.AddParameters("@yearLevel", yearLevel, DbType.String);
                 crud.AddParameters("@course", course, DbType.String);
                 crud.AddParameters("@code", uniqueCode, DbType.String);
+                crud.AddParameters("@codeStatus", "unuse", DbType.String);
 
                 bool success = crud.ExecuteNonQuery(insertQuery, true);
 
@@ -102,7 +170,7 @@ namespace OCSSCESa
 
         private string GenerateRandomCode(int length)
         {
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567";
             Random random = new Random();
             return new string(Enumerable.Repeat(chars, length)
                 .Select(s => s[random.Next(s.Length)]).ToArray());
@@ -126,13 +194,13 @@ namespace OCSSCESa
                     {
                         _votersData = code;
 
-                        // ✅ Clear old data sources
+
                         reportViewer1.LocalReport.DataSources.Clear();
 
-                        // ✅ Match this name with the dataset name in your RDLC report
+
                         ReportDataSource rds = new ReportDataSource("StudentCodeInfo", _votersData);
 
-                        // ✅ Provide the correct path to your RDLC file (relative to executable)
+
                         reportViewer1.LocalReport.ReportPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Reports", "RPTStudentList.rdlc");
 
 
@@ -155,9 +223,11 @@ namespace OCSSCESa
         }
 
 
-        private void generateCodeBtn_Click(object sender, EventArgs e)
+        private async void generateCodeBtn_Click(object sender, EventArgs e)
         {
-            GenerateCode();
+            generateCodeBtn.Enabled = false;
+            await RefreshDataSource(); 
+            generateCodeBtn.Enabled = true;
         }
 
         private bool IsReportReady()
@@ -225,5 +295,10 @@ namespace OCSSCESa
             }
         }
 
+        private void clearParams_Click(object sender, EventArgs e)
+        {
+            yearLevel.SelectedIndex = -1;
+            course.SelectedIndex = -1;
+        }
     }
 }
