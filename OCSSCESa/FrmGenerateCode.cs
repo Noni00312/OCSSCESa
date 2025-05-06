@@ -297,7 +297,7 @@ namespace OCSSCESa
 
         private void clearParams_Click(object sender, EventArgs e)
         {
-            yearLevel.SelectedIndex = -1;
+            yearLevel.SelectedIndex = -1;   
             course.SelectedIndex = -1;
         }
     }

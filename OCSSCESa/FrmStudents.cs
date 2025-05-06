@@ -28,6 +28,10 @@ namespace OCSSCESa
             "Year level ", "Course"
         };
 
+        private int pageSize = 15;
+        private int currentPage = 1;
+
+
         public FrmStudents()
 
         {
@@ -41,7 +45,7 @@ namespace OCSSCESa
            
 
                 string query = "SELECT studentId, fName, mName, lName, suffix, birthdate, age, gender, " +
-                                "civilStatus, address, contactNumber, yearLevel, course FROM studentinfotbl";
+                                "civilStatus, address, contactNumber, yearLevel, course FROM studentInfoTbl";
 
                 DataTable students = await Task.Run(()=> crud.ReadData(query, false));
 
@@ -90,7 +94,6 @@ namespace OCSSCESa
 
         private void UpdateDataGrid()
         {
-            //Styling.DataGridViewStyle(votersDatagrid);
             this.Invoke((MethodInvoker)delegate
             {
                 loadingIndicator.Visible = false;
@@ -101,7 +104,12 @@ namespace OCSSCESa
 
         private async void Students_Load(object sender, EventArgs e)
         {
+            Styling.DataGridViewStyle(votersDatagrid);
             await RefreshDataSource();
+            int totalPages = (int)Math.Ceiling(_votersData.Rows.Count / (double)pageSize);
+            currentPage = 1;
+            pageLabel.Text = "Page " + currentPage + " out of " + totalPages + " Pages";
+            LoadPagedData();
 
         }
 
@@ -121,8 +129,7 @@ namespace OCSSCESa
         private void votersDatagrid_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
-            {
-                // 
+            { 
                 if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
                 {
                     DataGridViewRow selectedRow = votersDatagrid.Rows[e.RowIndex];
@@ -299,6 +306,35 @@ namespace OCSSCESa
         private void btnSearch_Click(object sender, EventArgs e)
         {
             SearchAndDisplay();
+        }
+
+        private void nextPageButton_Click(object sender, EventArgs e)
+        {
+            int totalPages = (int)Math.Ceiling(_votersData.Rows.Count / (double)pageSize);
+            if (currentPage < totalPages)
+            {
+                currentPage++;
+                pageLabel.Text = "Page " + currentPage + " out of " + totalPages + " Pages";
+                LoadPagedData();
+            }
+        }
+
+        private void previousPageButton_Click(object sender, EventArgs e)
+        {
+            int totalPages = (int)Math.Ceiling(_votersData.Rows.Count / (double)pageSize);
+            if (currentPage > 1)
+            {
+                currentPage--;
+                pageLabel.Text = "Page " + currentPage + " out of " + totalPages + " Pages";
+                LoadPagedData();
+            }
+        }
+
+        private void LoadPagedData()
+        {
+            DataTable pagedData = PublicHelper.GetPagedTable(_votersData, pageSize, currentPage);
+
+            PublicHelper.DisplayData(votersDatagrid, pagedData, columnNames);
         }
     }
 }

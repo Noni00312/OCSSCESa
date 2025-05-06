@@ -488,6 +488,9 @@
     <None Include="Resources\icons8_microsoft_excel_96px.png" />
     <None Include="Resources\icons8_pdf_96px.png" />
     <None Include="Resources\icons8_close_32px.png" />
+    <None Include="Resources\icons8_menu_50px.png" />
+    <None Include="Resources\icons8_back_50px.png" />
+    <None Include="Resources\icons8_forward_50px.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

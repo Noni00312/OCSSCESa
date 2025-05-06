@@ -129,6 +129,30 @@ namespace OCSSCESa.Helper
             }
         }
 
+        public static DataTable GetPagedTable(DataTable dt, int pageSize, int pageNumber)
+        {
+            if (dt == null) return null;
+
+            DataTable pagedTable = dt.Clone();
+            try
+            {
+                int startIndex = (pageNumber - 1) * pageSize;
+                int endIndex = startIndex + pageSize;
+
+                for (int i = startIndex; i < endIndex && i < dt.Rows.Count; i++)
+                {
+                    pagedTable.ImportRow(dt.Rows[i]);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                SystemSounds.Hand.Play();
+                MessageBox.Show($"An error occur while creating paged table. Error: {ex}", "PAGED TABLE FAILED TO GENERATE", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return pagedTable;
+        }
+
         public static void ClearControls(Form frm)
         {
             try

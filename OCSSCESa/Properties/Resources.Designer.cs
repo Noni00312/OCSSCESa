@@ -153,6 +153,16 @@ namespace OCSSCESa.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_back_50px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_back_50px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_circled_user_male_skin_type_7_480px {
             get {
                 object obj = ResourceManager.GetObject("icons8_circled_user_male_skin_type_7_480px", resourceCulture);
@@ -213,6 +223,16 @@ namespace OCSSCESa.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_forward_50px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_forward_50px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_info_squared_96px {
             get {
                 object obj = ResourceManager.GetObject("icons8_info_squared_96px", resourceCulture);
@@ -226,6 +246,16 @@ namespace OCSSCESa.Properties {
         internal static System.Drawing.Bitmap icons8_logout_64px {
             get {
                 object obj = ResourceManager.GetObject("icons8_logout_64px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_menu_50px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_menu_50px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -17,6 +17,9 @@ namespace OCSSCESa
 {
     public partial class FrmMain : Form
     {
+
+        private string currentPage = "";
+
         public FrmMain()
         {
             InitializeComponent();
@@ -27,6 +30,7 @@ namespace OCSSCESa
             // MessageBox.Show($"{Settings.Default.Port} {Settings.Default.Server} {Settings.Default.Username}");
             //DashboardButton.Checked = true;'
             windowLabel.Text = "Dashboard";
+            currentPage = "Dashboard";
             FrmDashboard dashboard = new FrmDashboard();
             PublicHelper.DisplayChildForm(mainPanel, dashboard);
             
@@ -35,6 +39,7 @@ namespace OCSSCESa
         private void dashboardButton_Click(object sender, EventArgs e)
         {
             windowLabel.Text = "Dashboard";
+            currentPage = "Dashboard";
             FrmDashboard dashboard = new FrmDashboard();
             PublicHelper.DisplayChildForm(mainPanel, dashboard);
         }
@@ -42,6 +47,7 @@ namespace OCSSCESa
         public void studentButton_Click(object sender, EventArgs e)
         {
             windowLabel.Text = "Students";
+            currentPage = "Students";
             FrmStudents student = new FrmStudents();
             PublicHelper.DisplayChildForm(mainPanel, student);
         }
@@ -49,6 +55,7 @@ namespace OCSSCESa
         private void candidatesButton_Click(object sender, EventArgs e)
         {
             windowLabel.Text = "Candidates";
+            currentPage = "Candidates";
             FrmCandidate candidates = new FrmCandidate();
             PublicHelper.DisplayChildForm(mainPanel, candidates);
         }
@@ -56,6 +63,7 @@ namespace OCSSCESa
         private void usersButton_Click(object sender, EventArgs e)
         {
             windowLabel.Text = "Users";
+            currentPage = "Users";
             FrmUsers users = new FrmUsers();
             PublicHelper.DisplayChildForm(mainPanel, users);
         }
@@ -64,16 +72,6 @@ namespace OCSSCESa
         {
             FrmResult frmResult = new FrmResult();
             frmResult.Show(); 
-        }
-
-        private void profileButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void logoutButton_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void userPicture_Click_1(object sender, EventArgs e)
@@ -98,6 +96,55 @@ namespace OCSSCESa
         {
             FrmGenerateCode frmGenerateCode = new FrmGenerateCode();
             frmGenerateCode.ShowDialog();
-        }  
+        }
+
+        private void ReloadPage(string pageName)
+        {
+            mainPanel.SuspendLayout();
+            mainPanel.Visible = false;
+
+            switch (pageName)
+            {
+                case "Dashboard":
+                    mainPanel.Visible = false;
+                    dashboardButton.PerformClick();
+                    mainPanel.Visible = true;
+                    break;
+                case "Students":
+                    mainPanel.Visible = false;
+                    studentButton.PerformClick();
+                    mainPanel.Visible = true;
+                    break;
+                case "Candidates":
+                    mainPanel.Visible = false;
+                    candidatesButton.PerformClick();
+                    mainPanel.Visible = true;
+                    break;
+                case "Users":
+                    mainPanel.Visible = false;
+                    usersButton.PerformClick();
+                    mainPanel.Visible = true;
+                    break;
+                default: break;
+            }
+
+            mainPanel.Visible = true;
+            mainPanel.ResumeLayout(); 
+        }
+
+        private void menuButton_Click(object sender, EventArgs e)
+        {
+            
+            if (sidebarPanel.Width == 204)
+            {
+                sidebarPanel.Width = 50;
+                ReloadPage(currentPage);
+            }
+            else
+            {
+                sidebarPanel.Width = 204;
+                ReloadPage(currentPage);
+            }
+        }
     }
 }
